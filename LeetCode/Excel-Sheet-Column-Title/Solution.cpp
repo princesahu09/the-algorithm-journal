@@ -8,10 +8,10 @@
             while(columnNumber>0)
             {
                 columnNumber--;
-                ans+=(char)(columnNumber%26+'A');
+                ans=(char)(columnNumber%26+'A')+ans;
                 columnNumber/=26;
             }
-            reverse(ans.begin(),ans.end());
+           // reverse(ans.begin(),ans.end());
             return ans;
             
 
