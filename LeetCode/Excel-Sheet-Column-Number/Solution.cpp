@@ -1,0 +1,1 @@
+public int TitleToNumber(string s) { return s.Aggregate(0, (n, c) => n * 26 + c - 0x40); }
