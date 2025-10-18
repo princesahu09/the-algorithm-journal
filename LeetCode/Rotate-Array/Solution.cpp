@@ -1,14 +1,26 @@
 class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
-        k=k%nums.size();
+        k = k % nums.size();  
+        // in case k > nums.size()
+        vector<int>temp;
 
 
-        reverse(nums.begin(),nums.end());
-        reverse(nums.begin(),nums.begin()+k);
-        reverse(nums.begin()+k,nums.end());
+        while(k!=0)
+        {
+            
+           
+            temp.push_back(nums.back());
+             nums.pop_back();
+           
+            k--;
+        }
+        reverse(temp.begin(),temp.end());
+        nums.insert(nums.begin(),temp.begin(),temp.end());
 
-       
+        
+
+        
         
     }
 };
