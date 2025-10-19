@@ -1,14 +1,32 @@
 class Solution {
 public:
     int missingMultiple(vector<int>& nums, int k) {
-        unordered_set<int> s(nums.begin(), nums.end()); // O(n) lookup
+       vector<int>s;
 
-        int multiple = k;
-        while (true) {
-            if (s.find(multiple) == s.end()) {
-                return multiple; // found the missing multiple
+        for(auto &i:nums)
+            {
+                if(i%k==0)s.push_back(i);
+                
             }
-            multiple += k;
-        }
+        if(s.empty())return k;
+        sort(s.begin(),s.end());
+        int multiple=k;
+
+        while(s.back()>=multiple)
+            {
+                bool status=binary_search(s.begin(),s.end(),multiple);
+                if(!status)
+                {
+                
+                return multiple;
+
+                }
+                    multiple+=k;
+                
+                
+            }
+
+        return s.back()+k;
+        
     }
 };
