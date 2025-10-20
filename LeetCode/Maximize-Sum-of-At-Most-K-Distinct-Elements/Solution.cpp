@@ -5,17 +5,17 @@ public:
 
        set<int,greater<int>>s(nums.begin(),nums.end());
 
-       vector<int>ans;
+       nums.clear();
        int count=0;
 
        for(auto i=s.begin();i!=s.end()&&count<k;i++)
        {
       
-        ans.push_back(*i);
+        nums.push_back(*i);
         count++;
        }
 
-       return ans;
+       return nums;
 
        
 
