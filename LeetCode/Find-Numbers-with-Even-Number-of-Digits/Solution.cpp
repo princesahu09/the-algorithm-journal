@@ -6,7 +6,8 @@ public:
 
         for(auto &i:nums)
         {
-            int temp=log10(i)+1;
+            int temp=0;
+            while(i>0){i/=10;temp++;}
             if(temp%2==0)ans++;
         }
         return ans;
