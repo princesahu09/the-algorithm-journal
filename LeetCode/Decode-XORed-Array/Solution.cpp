@@ -8,9 +8,9 @@ public:
 
         for(int i=0;i<encoded.size();i++)
         {
-            int b=first^encoded[i];
-            ans.push_back(b);
-            first=b;
+           
+            ans.push_back(ans.back()^encoded[i]);
+           
             
 
 
