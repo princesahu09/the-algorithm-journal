@@ -6,31 +6,13 @@ public:
         string ans="";
         int i=0;
         int j=0;
-        while(i<word1.size()&&j<word2.size())
+        while(i<word1.size()||j<word2.size())
 
         {
-            if(toggle)
-            {
-                ans+=word1[i];i++;
-                toggle=!toggle;
-            }
-           else
-            {
-                ans+=word2[j];j++;
-                toggle=!toggle;
-            }
-
+           if(i<word1.size())ans+=word1[i++];
+           if(j<word2.size())ans+=word2[j++];
         }
-        while(i<word1.size())
-        {
-            ans+=word1[i];
-            i++;
-        }
-        while(j<word2.size())
-        {
-            ans+=word2[j];
-            j++;
-        }
+       
 
         return ans;
     }
