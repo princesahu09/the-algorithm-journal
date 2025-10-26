@@ -15,7 +15,7 @@ public:
             }
             reverse(demo.begin(),demo.end());
             ans.insert(ans.end(),demo.begin(),demo.end());
-            demo.clear();
+          
         }
         return ans;
         
