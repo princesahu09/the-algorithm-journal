@@ -4,13 +4,13 @@ public:
 
         int ans = 0;
         int i = num;
-        while (i > 0) {
-            int r = i % 10;
-            if (num % r == 0) {
+        while (num > 0) {
+            int r = num % 10;
+            if (i % r == 0) {
                 ans++;
               
             }
-              i /= 10;
+              num /= 10;
         }
 
         return ans;
