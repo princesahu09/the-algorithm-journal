@@ -2,7 +2,7 @@ class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
 
-        unordered_map<int,int>freq;
+        map<int,int>freq;
 
         for(auto &i:nums)
         {
@@ -18,7 +18,7 @@ public:
                 j++;
             }
         }
-        sort(nums.begin(),nums.end());
+        //sort(nums.begin(),nums.end());
         return nums.size();
         
     }
