@@ -2,36 +2,31 @@ class Solution {
 public:
     string reverseVowels(string s) {
 
-        vector<char>vowels;
-        string ans="";
+        int i = 0;
+        int j = s.size() - 1;
+        string lvowels = "aeiou";
+        string cvowels = "AEIOU";
 
-      for(int i=0;i<s.size();i++)
-      {
-        char ch=s[i];
-        if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'||ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U')
-        {
-            vowels.push_back(ch);
-        }
-      }
-      reverse(vowels.begin(),vowels.end());
-      int k=0;
-      for(int i=0;i<s.size();i++)
-      {
-        char ch=s[i];
-        if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'||ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U')
-        {
-            ans+=vowels[k];
-            k++;
-           
-        }
-        else
-        {
-            ans+=ch;
-        }
+        while (i < j) {
+            char start = s[i];
+            char end = s[j];
+            if ((lvowels.find(start) != string::npos || cvowels.find(start) != string::npos) &&
+                (lvowels.find(end) != string::npos || cvowels.find(end) != string::npos))
 
-      }
+            {
+                swap(s[i],s[j]);
+                i++;j--;
+            }
+            else if(lvowels.find(start) == string::npos && cvowels.find(start) ==string:: npos)
+            {
+                i++;
 
-      return ans;
-        
+            }
+            else
+            {
+                j--;
+            }
+        }
+        return s;
     }
 };
