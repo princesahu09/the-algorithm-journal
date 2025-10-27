@@ -4,14 +4,20 @@ public:
 
         stringstream ss(s);
         string word;
-        string ans="";
+        string ans = "";
+        stack<string>words;
 
-        while(ss >> word)
+        while (ss >> word) {
+            words.push(word);
+           
+        }
+        while(!words.empty())
         {
-            ans=word+" "+ans;
-
-        }ans.pop_back();
-        return ans;
-        
+            string r=words.top();
+            ans+=r+" ";
+            words.pop();
+        }
+        ans.pop_back();
+       return ans;
     }
 };
