@@ -14,11 +14,15 @@ public:
         n/=10;
 
     }
-   string re=to_string(ans);
-    reverse(re.begin(),re.end());
-    ans=stol(re);
-    return ans;
-   
+    long long re=0;
+    while(ans>0)
+    {
+        re=re*10+ans%10;
+        ans/=10;
+
+    }
+
+    return re;
         
     }
 };
