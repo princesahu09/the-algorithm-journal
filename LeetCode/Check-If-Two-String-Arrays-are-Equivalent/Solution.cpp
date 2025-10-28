@@ -14,7 +14,7 @@ public:
         {
             str2+=i;
         }
-        return str1==str2?true:false;
+        return str1.compare(str2)==0?true:false;
         
     }
 };
