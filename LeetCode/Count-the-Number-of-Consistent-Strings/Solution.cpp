@@ -2,7 +2,7 @@ class Solution {
 public:
     int countConsistentStrings(string allowed, vector<string>& words) {
 
-        vector<bool>present(26);
+        vector<bool>present(26,false);
         int ans=0;
 
         for(auto &i:allowed)
