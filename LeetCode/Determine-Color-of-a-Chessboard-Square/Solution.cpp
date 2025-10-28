@@ -4,28 +4,11 @@ public:
         int row=coordinates[0]-'a'+1;
         int col=coordinates[1]-'0';
 
-        if(col%2==0)
-        {
-           if(row%2!=0)
-           {
-            return true;
-           }
-           else
-           {
-            return false;
-           }
-        }
-        else
-        {
-            if(row%2==0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        
+
+        if(col%2==0&&row%2!=0)return true;
+        else if(col%2!=0&&row%2==0)return true;
+        else return false;
        
         
     }
