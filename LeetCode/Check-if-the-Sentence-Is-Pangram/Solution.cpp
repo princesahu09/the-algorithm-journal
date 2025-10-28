@@ -8,11 +8,8 @@ public:
         {
             letter[i-'a']=true;
         }
-        for(int i=0;i<letter.size();i++)
-        {
-            if(!letter[i])return false;
-        }
-        return true;
+       return all_of(letter.begin(), letter.end(), [](bool x){ return x; });
+
         
     }
 };
