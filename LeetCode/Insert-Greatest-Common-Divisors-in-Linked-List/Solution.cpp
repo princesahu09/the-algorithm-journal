@@ -21,7 +21,7 @@ public:
 
             pusher->next = temp->next;
             temp->next = pusher;
-            temp = pusher->next;
+            temp = temp->next->next;
         }
 
         return head;
