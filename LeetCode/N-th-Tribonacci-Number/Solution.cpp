@@ -5,9 +5,9 @@ public:
             return n;
         else if (n == 2)
             return 1;
-        else
 
-        {
+
+        
             int x = 0;
             int y = 1;
             int z = 1;
@@ -19,6 +19,6 @@ public:
                 z = curr;
             }
             return z;
-        }
+        
     }
 };
