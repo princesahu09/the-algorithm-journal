@@ -1,11 +1,22 @@
 class Solution {
 public:
-    int climbStairs(int n) {
 
-        long double theta = (1 + sqrt(5)) / 2;
-       long  double psi =  (1 - sqrt(5)) / 2;
-         double result = (powl(theta, n + 1) -powl(psi, n + 1)) / sqrt(5);
+int climb(int n,vector<int>&dp)
+{
+    if(n==1)return 1;
+    if(n==2)return 2;
+    if(dp[n]!=-1)return dp[n];
+    dp[n]=climb(n-1,dp)+climb(n-2,dp);
+    return dp[n];
+}
+    int climbStairs(int &n) {
 
-        return llround(result);
+        vector<int>dp(n+1,-1);
+
+        int ways=climb(n,dp);
+        return ways;
+
+
+        
     }
 };
