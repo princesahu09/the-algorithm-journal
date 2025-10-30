@@ -7,11 +7,12 @@ public:
         int x=0;
         int y=1;
         int z=1;
+        int curr=0;
         
 
         for(int i=3;i<=n;i++)
         {
-            int curr=x+y+z;
+             curr=x+y+z;
             x=y;
             y=z;
             z=curr;
