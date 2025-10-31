@@ -5,10 +5,11 @@ class Solution {
         var x=0;
         var y=1;
         var z=1;
+        var curr=0;
         
         for(i in 3.. n)
         {
-           val curr=x+y+z;
+            curr=x+y+z;
             x=y;
             y=z;
             z=curr;
