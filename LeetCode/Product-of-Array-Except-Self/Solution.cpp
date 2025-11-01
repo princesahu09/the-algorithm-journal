@@ -17,12 +17,12 @@ public:
                 zero++;
             }
         }
-        vector<int>ans;
+        
+            vector<int>ans(nums.size(),0);
 
         if(zero>1)
         {
-            vector<int>z(nums.size(),0);
-            return z;
+            return ans;
         }
         else if(zero==1)
         {
@@ -30,11 +30,11 @@ public:
             {
                 if(nums[i]!=0)
                 {
-                    ans.push_back(0);
+                   ans[i]=0;
                 }
                 else
                 {
-                    ans.push_back(product);
+                    ans[i]=product;
                 }
             }
         }
@@ -42,7 +42,7 @@ public:
         {
             for(int i=0;i<nums.size();i++)
             {
-                ans.push_back(product/nums[i]);
+                ans[i]=product/nums[i];
             }
         }
 
