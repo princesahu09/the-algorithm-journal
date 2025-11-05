@@ -1,0 +1,1 @@
+can take some letters from s and rearrange them to form new strings.
