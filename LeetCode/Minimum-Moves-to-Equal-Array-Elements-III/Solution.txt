@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int minMoves(vector<int>& nums) {
+
+       int high=*max_element(nums.begin(),nums.end());
+        int ans=0;
+
+
+        for(auto &i:nums)
+            {
+                ans+=(high-i);
+                
+            }
+
+        return ans;
+    }
+};
