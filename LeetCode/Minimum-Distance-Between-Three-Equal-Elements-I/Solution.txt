@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int minimumDistance(vector<int>& nums) {
+        unordered_map<int, vector<int>> indices;
+        int n = nums.size();
+
+        // Step 1: Store all indices of each number
+        for (int i = 0; i < n; i++) {
+            indices[nums[i]].push_back(i);
+        }
+
+        int minDist = INT_MAX;
+        bool found = false;
+
+        // Step 2: For each number that appears at least 3 times
+        for (auto &entry : indices) {
+            vector<int>& idx = entry.second;
+            if (idx.size() < 3) continue;
+
+            // Step 3: Since sorted, check all triplets
+            for (int a = 0; a < (int)idx.size(); a++) {
+                for (int b = a + 1; b < (int)idx.size(); b++) {
+                    for (int c = b + 1; c < (int)idx.size(); c++) {
+                        int dist = abs(idx[a] - idx[b]) +
+                                   abs(idx[b] - idx[c]) +
+                                   abs(idx[c] - idx[a]);
+                        minDist = min(minDist, dist);
+                        found = true;
+                    }
+                }
+            }
+        }
+
+        return found ? minDist : -1;
+    }
+};
