@@ -1,11 +1,9 @@
-static int list_append(PyListObject *self, PyObject *v)
-{
-    if (self->allocated <= Py_SIZE(self)) {
-        if (list_resize(self, more) == -1)
-            return -1;
+class Solution {
+public:
+    vector<int> getConcatenation(vector<int>& nums) {
+      
+
+        nums.insert(nums.end(),nums.begin(),nums.end());return nums;
+        
     }
-    Py_INCREF(v);
-    Py_SET_SIZE(self, Py_SIZE(self)+1);
-    PyList_SET_ITEM(self, Py_SIZE(self)-1, v);
-    return 0;
-}
+};
