@@ -3,6 +3,10 @@ public:
     char kthCharacter(int k) {
 
         string word = "a";
+        if(k==1)
+        {
+            return 'a';
+        }
        
         while (word.size()<k) {
             string str = word;
