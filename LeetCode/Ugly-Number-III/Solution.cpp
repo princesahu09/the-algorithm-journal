@@ -16,7 +16,8 @@ private:
 public:
     int nthUglyNumber(int n, int a, int b, int c) {
         
-        long long low = 1, high = 2e18;  
+        long long low = 1, high = 2e9
+        ;  
         
         while (low < high)
         {
