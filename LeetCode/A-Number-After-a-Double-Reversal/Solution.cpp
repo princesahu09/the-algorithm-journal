@@ -1,14 +1,23 @@
 class Solution {
-public:
+
+    int reverse(int num)
+    {
+        int ans=0;
+        while(num>0)
+        {
+            ans=ans*10+(num%10);
+            num/=10;
+        }
+        return ans;
+
+    }
+public: 
     bool isSameAfterReversals(int num) {
 
-        string demo=to_string(num);
-        reverse(demo.begin(),demo.end());
-        long long i=stol(demo);
-        demo=to_string(i);
-        reverse(demo.begin(),demo.end());
-        i=stol(demo);
-        return num==i?true:false;
+        int r=reverse(num);
+        r=reverse(r);
+
+        return num==r?true:false;
         
     }
 };
