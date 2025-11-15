@@ -15,7 +15,7 @@ private:
 public:
     int minOperations(vector<int>& nums) 
     {
-        int n = nums.size();
+        const int n = nums.size();
 
        
         if (!findGcd(nums)) return -1;
