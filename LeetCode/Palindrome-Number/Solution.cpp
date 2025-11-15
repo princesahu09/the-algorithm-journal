@@ -1,11 +1,22 @@
 class Solution {
 public:
+    long reverse(long num, long ans) {
+        if (num == 0) {
+            return ans;
+        }
+
+        return reverse(num / 10, ans * 10 + (num % 10));
+    }
     bool isPalindrome(int x) {
-        
-        string r=to_string(x);
-        reverse(r.begin(),r.end());
-        int rev=stol(r);
-        return x==rev?true:false;
-        
+        if(x<0)
+        {
+            return false;
+        }
+
+        if (x == reverse(x, 0)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 };
