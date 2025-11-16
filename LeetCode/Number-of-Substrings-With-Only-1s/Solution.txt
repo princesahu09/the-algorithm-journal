@@ -1,0 +1,12 @@
+class Solution {
+public:
+   int numSub(string s) {
+    long long result = 0, curr = 0, mod = 1e9 + 7;
+    for (char c : s) {
+        if (c == '1') curr++;
+        else curr = 0;
+        result = (result + curr) % mod;
+    }
+    return result;
+    }
+};
