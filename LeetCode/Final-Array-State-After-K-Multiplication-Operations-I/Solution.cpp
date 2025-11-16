@@ -1,0 +1,1 @@
+[5,4] < [5,6] # both lists have the same value for their first position, so values in the second position are used to identify which is smaller
