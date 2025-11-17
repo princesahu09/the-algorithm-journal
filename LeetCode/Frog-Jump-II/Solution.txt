@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int maxJump(vector<int>& stones) {
+        int maxi = INT_MIN;
+        for(int i=2;i<stones.size();i++){
+            maxi = max(stones[i]-stones[i-2],maxi);
+        }
+        maxi = max(stones[1]-stones[0],maxi);
+        return maxi;
+    }
+};
