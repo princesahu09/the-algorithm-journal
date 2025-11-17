@@ -9,7 +9,7 @@ public:
         const int x3 = points[2][0];
         const int y3 = points[2][1];
 
-        int sum=x1*(y2-y3)+x2*(y3-y1)+x3*(y1-y2);
+      const  int sum=x1*(y2-y3)+x2*(y3-y1)+x3*(y1-y2);
 
         return sum!=0?true:false;
     }
