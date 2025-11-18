@@ -3,7 +3,7 @@ public:
     int arithmeticTriplets(vector<int>& nums, int diff) {
       
         int ans=0;
-        unordered_set<int>s(nums.begin(),nums.end());
+      const  unordered_set<int>s(nums.begin(),nums.end());
 
         for(auto &x:nums)
         {
