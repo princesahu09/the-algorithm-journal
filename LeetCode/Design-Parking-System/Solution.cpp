@@ -19,14 +19,14 @@ public:
                 return false;
         }
 
-        if (carType == 2) {
+      else  if (carType == 2) {
             if (medium > 0) {
                 medium--;
                 return true;
             } else
                 return false;
         }
-        if (carType == 1) {
+      else  if (carType == 1) {
             if (big > 0) {
                 big--;
                 return true;
