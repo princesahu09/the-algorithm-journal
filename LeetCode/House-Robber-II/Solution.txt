@@ -1,0 +1,49 @@
+class Solution {
+public:
+    int check(vector<int>& arr) {
+        int n = arr.size();
+        if (n == 0)
+            return 0;
+        if (n == 1)
+            return arr[0];
+
+        int prev = arr[0];
+        int prev2 = 0;
+
+        for (int i = 1; i < n; i++) {
+            int x;
+            if (i >= 2) {
+                x = arr[i] + prev2;
+            } else {
+                x = arr[i] + 0; 
+            }
+
+            int y = prev;
+
+            int curr = max(x, y);
+            prev2 = prev;
+            prev = curr;
+        }
+        return prev;
+    }
+    int rob(vector<int>& nums) {
+        int n = nums.size();
+        if (n == 1) {
+            return nums[0];
+        }
+        vector<int> ans1;
+        vector<int> ans2;
+        for (int i = 0; i < n; i++) {
+            if (i != 0) {
+                ans1.push_back(nums[i]);
+            }
+            if (i != n - 1) {
+                ans2.push_back(nums[i]);
+            }
+        }
+        int a = check(ans1);
+        int b = check(ans2);
+
+        return max(a, b);
+    }
+};
