@@ -2,14 +2,19 @@ class Solution {
 public:
     int findFinalValue(vector<int>& nums, int original) {
 
-        unordered_set<int>s(nums.begin(),nums.end());
-        
+      sort(nums.begin(),nums.end());
 
-        while(s.count(original))
+
+      int i=0;
+      while(i<nums.size())
+      {
+        if(nums[i]==original)
         {
             original*=2;
         }
-        return original;
+        i++;
+      }
+      return original;
         
     }
 };
