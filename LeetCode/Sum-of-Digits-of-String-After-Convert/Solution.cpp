@@ -10,9 +10,10 @@ public:
 
         int ans = 0;
 
+        string str = number;
         while (k--) {
             int sum = 0;
-            string str = number;
+            str = number;
 
             for (auto& i : str) {
                 sum += (i - '0');
