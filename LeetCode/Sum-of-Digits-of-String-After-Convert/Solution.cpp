@@ -1,26 +1,16 @@
-class Solution {
-public:
-    int getLucky(string s, int k) {
-
-        string number = "";
-        for (auto& i : s) {
-
-            number += to_string(i - 'a' + 1);
-        }
-
-        int ans = 0;
-
-        string str = number;
-        while (k--) {
-            int sum = 0;
-            str = number;
-
-            for (auto& i : str) {
-                sum += (i - '0');
-            }
-            ans = sum;
-            number = to_string(sum);
-        }
-        return ans;
-    }
-};
+"hvmhoasabaymnmsd"
+1
+"dbvmfhnttvr"
+2
+"ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+1
+"sssssswwsssssrrrrrrrrrttttttttttttttttttttttttttttttttttttttttttttttrrrrrrrrrrrrrrrrrrssssssssssssss"
+10
+"abcdefghijklmnopqrstuvwxyz"
+5
+"aucnewitainwctuancgacguagrycbfhsdbffhbfnvfhsrtsyfhyshfytufhsutgfghshejfhsjeghfjsehg"
+2
+"asdfghlqwertyuiopzxcvbnmazqsxwdcefvrgbthnmyujkukl"
+2
+"ijsbiushfjhsbfhaxvgrgvrjbxhrgghgujdjdkjaaqiuiwueubcbcnzkozizoiwowekdkdjkddjdji"
+2
