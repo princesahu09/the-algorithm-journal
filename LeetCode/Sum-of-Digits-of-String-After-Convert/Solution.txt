@@ -1,26 +1,19 @@
 class Solution {
 public:
     int getLucky(string s, int k) {
-
-        string number = "";
-        for (auto& i : s) {
-
-            number += to_string(i - 'a' + 1);
+        string ans = "";
+        for(int i=0;i<s.size();i++){
+            int val = (s[i]-'a')+1;
+            ans+=to_string(val);
         }
-
-        int ans = 0;
-
-        string str = number;
-        while (k--) {
-            int sum = 0;
-            str = number;
-
-            for (auto& i : str) {
-                sum += (i - '0');
-            }
-            ans = sum;
-            number = to_string(sum);
+        int sum = 0;
+        while(k--){
+            sum = 0;
+        for(int i=0;i<ans.size();i++){
+            sum += ans[i]-'0';
+          }
+          ans = to_string(sum);
         }
-        return ans;
+        return sum;
     }
 };
