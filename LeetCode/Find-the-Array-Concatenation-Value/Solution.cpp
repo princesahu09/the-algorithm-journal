@@ -1,11 +1,23 @@
 class Solution {
 
 private:
+    int digits(int num)
+    {
+        int counter=0;
+        while(num>0)
+        {
+            counter++;
+            num/=10;
+        }
+        return counter;
+    }
     long long merger(int num1, int num2)
 
     {
-        string answer = to_string(num1) + to_string(num2);
-        return stoll(answer);
+        int d=digits(num2);
+        long long answer=num1*pow(10,d)+num2;
+        
+        return answer;
     }
 
 public:
