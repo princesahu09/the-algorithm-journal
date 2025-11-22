@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int minimumFlips(int n) {
+
+        string rbit = "";
+
+        while (n > 0) {
+            int r = n & 1;
+            rbit += (char)(r + '0');
+            n >>= 1;
+        }
+       
+
+        string bit = rbit;
+        reverse(bit.begin(), bit.end());
+
+        int flip = 0;
+        for (int i = 0; i < bit.size(); i++) {
+            if (rbit[i] != bit[i]) {
+                flip++;
+            }
+        }
+
+        return flip;
+    }
+};
