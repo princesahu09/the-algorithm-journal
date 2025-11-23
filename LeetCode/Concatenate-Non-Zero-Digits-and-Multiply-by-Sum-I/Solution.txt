@@ -1,24 +1,21 @@
 class Solution {
 public:
     long long sumAndMultiply(int n) {
-
-
-        long long sum=0;
-        long long number=0;
-        while(n>0)
-            {
-                int r=n%10;
-                if(r!=0)
-                {
-                    number=number*10+r;
-                }
-                sum+=r;
-                n/=10;
-            }
-        string s=to_string(number);
-        reverse(s.begin(),s.end());
-        number=stoll(s);
-        return sum*number;
+        string s=to_string(n);
+        long long  sum=0;
+        string t="";
+        for(int i=0;i<s.size();i++){
+            if(s[i]!='0'){
+            sum+=s[i]-'0';
+            t+=s[i];
+        }
+        }
+        if(t==""){
+            return 0;
+        }
+        long long p=stoll(t);
+        return sum*p;
+        
         
     }
 };
