@@ -6,8 +6,8 @@ public:
         for(auto &i:details)
         {
            
-            int age=(i[11]-'0')*10+(i[12]-'0');
-            if(age>60)
+             if(((i[11]-'0')*10+(i[12]-'0'))>60)
+          
             {
                 ans++;
             }
