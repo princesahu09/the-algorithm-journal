@@ -2,7 +2,7 @@
 2public:
 3    int removeDuplicates(vector<int>& nums) {
 4
-5        unordered_map<int,int>freq;
+5        map<int,int>freq;
 6
 7        for(auto &i:nums)
 8        {
@@ -18,7 +18,7 @@
 18                j++;
 19            }
 20        }
-21        sort(nums.begin(),nums.end());
+21        //sort(nums.begin(),nums.end());
 22        return nums.size();
 23        
 24    }
