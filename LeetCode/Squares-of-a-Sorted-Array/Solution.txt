@@ -1,0 +1,20 @@
+1class Solution {
+2public:
+3    vector<int> sortedSquares(vector<int>& nums) {
+4        vector<int>ans(nums.size(),0);
+5        int n = nums.size();
+6        int left = 0;
+7        int right = n-1;
+8        for(int i=n-1;i>=0;i--){
+9            if(abs(nums[left]) > abs(nums[right])){
+10                ans[i] = nums[left]*nums[left];
+11                left++;
+12            }
+13            else{
+14                ans[i] = nums[right]*nums[right];
+15                right--;
+16            }
+17        }
+18        return ans;
+19    }
+20};
