@@ -1,0 +1,30 @@
+1class Solution {
+2public:
+3    int arithmeticTriplets(vector<int>& nums, int diff) {
+4        int n = nums.size();
+5        int i = 0, j = 0, k = 0;
+6        int count = 0;
+7        while (k < n) {
+8            while (j < n && nums[j] - nums[i] < diff) {
+9                j++;
+10            }
+11            while (k < n && nums[k] - nums[j] < diff) {
+12                k++;
+13            }
+14            if (j < n && k < n &&
+15                nums[j] - nums[i] == diff && nums[k] - nums[j] == diff) 
+16            {
+17                count++;
+18                i++;  
+19            }
+20            else {
+21                i++;
+22            }
+23             if (j < i) j = i;
+24            if (k < j) k = j;
+25        }
+26
+27        return count;
+28    }
+29};
+30
