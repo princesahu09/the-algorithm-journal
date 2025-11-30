@@ -1,0 +1,19 @@
+1class Solution {
+2public:
+3    int maxCoins(vector<int>& piles) {
+4        sort(piles.begin(), piles.end());
+5
+6        int sum = 0;
+7        int n = piles.size();
+8
+9        int i = n - 2; 
+10
+11        for(int k = 0; k < n/3; k++){ 
+12            sum += piles[i];
+13            i -= 2;
+14        }
+15
+16        return sum;
+17    }
+18};
+19
