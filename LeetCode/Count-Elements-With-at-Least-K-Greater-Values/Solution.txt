@@ -1,0 +1,15 @@
+1class Solution {
+2public:
+3    int countElements(vector<int>& nums, int k) {
+4        if(k==0)return nums.size();
+5        sort(nums.begin(),nums.end());
+6        int greater = nums[nums.size()-k];
+7        int ans = 0;
+8        for(int i=0;i<nums.size();i++){
+9            if(nums[i]<greater){
+10                ans++;
+11            }
+12        }
+13        return ans;
+14    }
+15};
