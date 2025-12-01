@@ -1,0 +1,52 @@
+1/**
+2 * Definition for a binary tree node.
+3 * struct TreeNode {
+4 *     int val;
+5 *     TreeNode *left;
+6 *     TreeNode *right;
+7 *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+8 *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+9 *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+10 * };
+11 */
+12class Solution {
+13    void goLeft(TreeNode* root, stack<TreeNode*> &s) {
+14        while (root) {
+15            s.push(root);
+16            root = root->left;
+17        }
+18    }
+19    
+20    void goRight(TreeNode* root, stack<TreeNode*> &s) {
+21        while (root) {
+22            s.push(root);
+23            root = root->right;
+24        }
+25    }
+26public:
+27    bool twoSumBSTs(TreeNode* root1, TreeNode* root2, int target) {
+28        stack<TreeNode*> s1, s2;
+29        goLeft(root1, s1);
+30        goRight(root2, s2);
+31        while (!s1.empty() && !s2.empty()) {
+32            root1 = s1.top();
+33            root2 = s2.top();
+34            const int d = root1->val + root2->val;
+35            if (d == target) {
+36                return true;
+37            }
+38            if (d > target) {
+39                s2.pop();
+40                goRight(root2->left, s2);
+41
+42            } else {
+43                s1.pop();
+44                goLeft(root1->right, s1);
+45
+46            }
+47
+48        }
+49        return false;
+50        
+51    }
+52};
