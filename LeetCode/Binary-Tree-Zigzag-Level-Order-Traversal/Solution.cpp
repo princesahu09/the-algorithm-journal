@@ -22,23 +22,24 @@
 22            ans.push_back({});
 23        }
 24
-25        ans[level].push_back(root->val);
-26        solve(root->left, ans, level + 1);
-27
-28        solve(root->right, ans, level + 1);
-29    }
-30
-31public:
-32    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
-33
-34        vector<vector<int>> ans;
-35
-36        solve(root, ans, 0);
+25        if(level%2==0)
+26
+27        ans[level].push_back(root->val);
+28        else
+29        ans[level].insert(ans[level].begin(),root->val);
+30        solve(root->left, ans, level + 1);
+31
+32        solve(root->right, ans, level + 1);
+33    }
+34
+35public:
+36    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
 37
-38        for(int i=1;i<ans.size();i+=2)
-39        {
-40            reverse(ans[i].begin(),ans[i].end());
-41        }
-42        return ans;
-43    }
-44};
+38        vector<vector<int>> ans;
+39
+40        solve(root, ans, 0);
+41
+42       
+43        return ans;
+44    }
+45};
