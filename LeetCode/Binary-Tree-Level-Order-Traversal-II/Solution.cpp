@@ -33,8 +33,8 @@
 33    vector<vector<int>> levelOrderBottom(TreeNode* root) {
 34
 35     
-36        vector<vector<int>>ans;
-37        if(root==nullptr)return ans;
+36        if(root==nullptr)return {};
+37        vector<vector<int>>ans;
 38      
 39        solve(root,ans,0);
 40        reverse(ans.begin(),ans.end());
