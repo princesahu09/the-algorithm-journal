@@ -1,0 +1,22 @@
+1class Solution {
+2public:
+3    long long maxRunTime(int n, vector<int>& batteries) {
+4        sort(batteries.begin(), batteries.end());
+5        const int m = batteries.size(), d = m - n;
+6        long long s = 0;
+7        for (int i = 0; i < d; ++i) {
+8            s += batteries[i];
+9        }
+10        long long r = batteries[d];
+11        for (int i = d + 1; s && i < m; ++i) {
+12            const long long need = static_cast<long long>(batteries[i] - batteries[i - 1]) * (i - d);
+13            if (need > s) {
+14                return r + s / (i - d);
+15            }
+16            s -= need;
+17            r = batteries[i];
+18        }
+19        return r + s / n;
+20        
+21    }
+22};
