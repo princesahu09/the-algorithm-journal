@@ -1,0 +1,25 @@
+1class Solution {
+2public:
+3    int maxOperations(string s) {
+4      long long x = 0;
+5    long long ans = 0;
+6    int n = s.length();
+7
+8        for (int i = 0; i < n; ++i) {
+9            if (s[i] == '1') {
+10                x++;
+11            } else {
+12                
+13                if (i + 1 == n || s[i + 1] == '1') {
+14                    ans += x;
+15                }
+16            }
+17        }
+18
+19        if (ans > INT_MAX){
+20      return INT_MAX;
+21        } 
+22        
+23        return (int)ans;
+24    }
+25};
