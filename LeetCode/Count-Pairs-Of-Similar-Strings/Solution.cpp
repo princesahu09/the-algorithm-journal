@@ -16,20 +16,27 @@
 16
 17        int ans=0;
 18
-19        for(int i=0;i<words.size();i++)
-20        {
-21
-22            for(int j=i+1;j<words.size();j++)
-23            {
-24
-25                if(bitmask(words[i])==bitmask(words[j]))
-26                {
-27                    ans++;
-28                }
-29            }
-30        }
+19        vector<int>masks(words.size(),0);
+20
+21        for(int i=0;i<words.size();i++)
+22        {
+23            masks[i]=bitmask(words[i]);
+24        }
+25
+26        for(int i=0;i<words.size();i++)
+27        {
+28
+29            for(int j=i+1;j<words.size();j++)
+30            {
 31
-32        return ans;
-33        
-34    }
-35};
+32                if(masks[i]==masks[j])
+33                {
+34                    ans++;
+35                }
+36            }
+37        }
+38
+39        return ans;
+40        
+41    }
+42};
