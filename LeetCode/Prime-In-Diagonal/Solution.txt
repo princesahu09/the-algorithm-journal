@@ -1,0 +1,23 @@
+1class Solution {
+2public:
+3    bool isPrime(int n){
+4        if(n < 2)
+5            return false;
+6        for(int i = 2; i * i <= n; i++){
+7            if(n % i == 0)  return false;
+8        }
+9        return true;
+10    }
+11    int diagonalPrime(vector<vector<int>>& nums) {
+12        int n = nums.size();
+13        int m = nums[0].size();
+14        int maxPrime = 0;
+15        for(int i = 0; i<n; i++){
+16            if(isPrime(nums[i][i]))
+17                maxPrime = max(maxPrime, nums[i][i]);
+18            if(isPrime(nums[i][m - i - 1]))
+19                maxPrime = max(maxPrime, nums[i][m- i - 1]);
+20        }
+21        return maxPrime;
+22    }
+23};
