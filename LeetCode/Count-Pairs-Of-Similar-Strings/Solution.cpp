@@ -22,7 +22,7 @@
 22            for(int j=i+1;j<words.size();j++)
 23            {
 24
-25                if(i!=j&&bitmask(words[i])==bitmask(words[j]))
+25                if(bitmask(words[i])==bitmask(words[j]))
 26                {
 27                    ans++;
 28                }
