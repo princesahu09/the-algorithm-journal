@@ -1,0 +1,16 @@
+1class Solution {
+2    typedef long long ll;
+3
+4    ll combination(int n, int r) {
+5        ll ans = 1;
+6
+7        for (int i = 1; i <= r; i++) {
+8            ans = ans * (n - r + i) / i;
+9        }
+10
+11        return ans;
+12    }
+13
+14public:
+15    int countVowelStrings(int n) { return combination(n + 4, 4); }
+16};
