@@ -1,0 +1,14 @@
+1class Solution {
+2public:
+3    bool checkIfExist(vector<int>& arr) {
+4        for(int i=0;i<arr.size();i++){
+5            for(int j=i+1;j<arr.size();j++){
+6             if(arr[i] == arr[j] * 2 || arr[j] == arr[i] * 2)
+7                {
+8                    return true;
+9                }
+10            }
+11        }
+12        return false;
+13    }
+14};
