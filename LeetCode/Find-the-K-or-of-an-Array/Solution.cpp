@@ -3,16 +3,16 @@
 3    int findKOr(vector<int>& nums, int k) {
 4       vector<int>bitone(32,0);
 5
-6       for(int &i:nums)
+6      for(int i=0;i<nums.size();i++)
 7       {
-8        int pos=0;
-9        while(i>0)
+8        int pos=0;int temp=nums[i];
+9        while(temp>0)
 10        {
-11            if(i&1){
+11            if(temp&1){
 12                bitone[pos]+=1;
 13            }
 14            pos++;
-15            i>>=1;
+15            temp>>=1;
 16        }
 17       }
 18
