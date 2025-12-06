@@ -3,7 +3,7 @@
 3    int findKOr(vector<int>& nums, int k) {
 4        unordered_map<int, int> bitone;
 5
-6        for (int i : nums) {
+6        for (int    &i : nums) {
 7            int pos = 0;
 8            while (i > 0) {
 9                if (i & 1) {
