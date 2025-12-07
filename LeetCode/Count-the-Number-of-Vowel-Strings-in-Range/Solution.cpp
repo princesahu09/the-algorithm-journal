@@ -1,8 +1,8 @@
 1class Solution {
 2public:
-3    bool check(string str) {
-4        const int n = str.size();
-5        set<char> vowels = {'a', 'e', 'u', 'i', 'o'};
+3        set<char> vowels = {'a', 'e', 'u', 'i', 'o'};
+4    bool check(string str) {
+5        const int n = str.size();
 6        if (vowels.count(str[0]) && vowels.count(str[n - 1]))
 7            
 8        {
