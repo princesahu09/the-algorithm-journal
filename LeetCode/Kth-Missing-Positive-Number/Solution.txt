@@ -1,0 +1,17 @@
+1class Solution {
+2public:
+3    int findKthPositive(vector<int>& arr, int k) {
+4        unordered_set<int> s(arr.begin(), arr.end());
+5        
+6        int x = 1;
+7        
+8        while (true) {
+9            if (s.find(x) == s.end()) {
+10                k--;
+11                if (k == 0) return x;
+12            }
+13            x++;
+14        }
+15    }
+16};
+17
