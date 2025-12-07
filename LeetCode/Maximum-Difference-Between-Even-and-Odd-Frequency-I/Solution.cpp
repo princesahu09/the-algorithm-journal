@@ -8,7 +8,7 @@
 8            freq[i - 'a']++;
 9        }
 10        int even = INT_MAX;
-11        int odd = INT_MIN;
+11        int odd = 0;
 12
 13        for (int i = 0; i < 26; i++) {
 14            if (freq[i] != 0)
@@ -21,7 +21,8 @@
 21                }
 22            }
 23        }
-24
-25        return  ( odd-even);
-26    }
-27};
+24        if(even==INT_MAX)even=0;
+25
+26        return  ( odd-even);
+27    }
+28};
