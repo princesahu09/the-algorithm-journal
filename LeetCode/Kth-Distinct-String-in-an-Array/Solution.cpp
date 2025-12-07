@@ -3,7 +3,7 @@
 3    string kthDistinct(vector<string>& arr, int k) {
 4
 5        unordered_map<string, int> freq;
-6        string ans = "";
+6       
 7        for (auto& i : arr) {
 8            freq[i]++;
 9        }
@@ -15,9 +15,10 @@
 15                if (k == 0) {
 16                    return i;
 17                }
-18            }
-19        }
-20
-21        return ans;
-22    }
-23};
+18    
+19            }
+20        }
+21
+22        return "";
+23    }
+24};
