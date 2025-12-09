@@ -6,7 +6,7 @@
 6
 7        int ans=0;
 8
-9        for(int i=0;i+1<nums.size();i+=2)
+9        for(int i=0;i<nums.size();i+=2)
 10        {
 11            ans+=nums[i];
 12           
