@@ -13,12 +13,12 @@
 13                odd.push_back(nums[i]);
 14            }
 15        }
-16        sort(odd.begin(),odd.end());
-17        reverse(odd.begin(),odd.end());
+16        sort(odd.begin(),odd.end(),greater<>());
+17       
 18        sort(even.begin(),even.end());
-19        
-20        int e=0;
-21        int o=0;
+19        int e=0,o=0;
+20        
+21       
 22       
 23
 24        for(int i=0;i<nums.size();i++)
