@@ -8,7 +8,7 @@
 8
 9        int ans=0;
 10
-11        while(i<boxTypes.size())
+11        while(i<boxTypes.size()&&truckSize>0)
 12
 13        {
 14
