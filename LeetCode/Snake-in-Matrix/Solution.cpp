@@ -4,7 +4,7 @@
 4
 5        int row = 0;
 6        int col = 0;
-7        for (auto &i : commands) {
+7        for (auto i : commands) {
 8            if (i == "UP") {
 9                row--;
 10
