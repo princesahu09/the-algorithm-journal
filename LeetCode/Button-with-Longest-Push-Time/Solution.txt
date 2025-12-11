@@ -1,0 +1,31 @@
+1class Solution {
+2public:
+3    int buttonWithLongestTime(vector<vector<int>>& events) {
+4
+5        int index=events[0][0];
+6        int high=events[0][1]-0;
+7        int ans=0;
+8
+9
+10        for(int i=1;i<events.size();i++)
+11        {
+12            int temp=events[i][1]-events[i-1][1];
+13
+14            if(temp>high)
+15            {
+16                high=temp;
+17                index=events[i][0];
+18                
+19            }
+20            else if(temp==high)
+21            {
+22                index=min(index,events[i][0]);
+23            }
+24
+25
+26        }
+27
+28        return index;
+29        
+30    }
+31};
