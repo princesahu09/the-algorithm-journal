@@ -1,0 +1,30 @@
+1class Solution {
+2public:
+3       int reverseNum(int x) {
+4        int r = 0;
+5        while (x > 0) {
+6            r = r * 10 + (x % 10);
+7            x /= 10;
+8        }
+9        return r;
+10    }
+11    int countNicePairs(vector<int>& nums) {
+12        vector<int>ans(nums.size(),0);
+13        for(int i=0;i<nums.size();i++){
+14            ans[i] = nums[i] - reverseNum(nums[i]);
+15        }
+16        unordered_map<long long,long long>mp;
+17        for(int j=0;j<ans.size();j++){
+18            mp[ans[j]]++;
+19        }
+20        long long count = 0;
+21        long long mod = 1e9 + 7;
+22
+23        for (auto& it : mp) {
+24            long long k = it.second;
+25            if (k % 2 == 0) count += (k/2) * (k-1);
+26            else count += k * ((k-1)/2);
+27        }
+28        return count%mod;
+29    }
+30};
