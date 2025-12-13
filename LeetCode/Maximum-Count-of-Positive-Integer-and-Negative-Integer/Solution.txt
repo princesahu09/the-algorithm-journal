@@ -1,0 +1,15 @@
+1class Solution {
+2public:
+3    int maximumCount(vector<int>& nums) {
+4        int n = nums.size();
+5
+6        int posIndex = upper_bound(nums.begin(), nums.end(), 0) - nums.begin();
+7        int posCount = n - posIndex;
+8        
+9        int negIndex = lower_bound(nums.begin(), nums.end(), 0) - nums.begin();
+10        int negCount = negIndex;
+11
+12        return max(posCount, negCount);
+13    }
+14};
+15
