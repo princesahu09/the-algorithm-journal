@@ -4,8 +4,8 @@
 4
 5        sort(nums.begin(),nums.end());
 6
-7        int forward=accumulate(nums.begin(),nums.begin()+k,0);
-8        int backward=accumulate(nums.rbegin(),nums.rbegin()+k,0);
+7      const   int forward=accumulate(nums.begin(),nums.begin()+k,0);
+8      const  int backward=accumulate(nums.rbegin(),nums.rbegin()+k,0);
 9
 10        return abs(forward-backward);
 11        
