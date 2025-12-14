@@ -1,14 +1,16 @@
 1class Solution {
 2public:
 3    int absDifference(vector<int>& nums, int k) {
-4
-5        sort(nums.begin(),nums.end());
-6
-7        int forward=accumulate(nums.begin(),nums.begin()+k,0);
-8        int backward=accumulate(nums.rbegin(),nums.rbegin()+k,0);
-9
-10        return abs(forward-backward);
-11        
-12        
-13    }
-14};
+4        sort(nums.begin(),nums.end());
+5        int n = nums.size();
+6        int smallest = 0;
+7        int largest = 0;
+8        for(int i=0;i<k;i++){
+9            smallest += nums[i];
+10        }
+11        for(int j=n-1;j>=n-k;j--){
+12            largest += nums[j];
+13        }
+14        return abs(smallest-largest);
+15    }
+16};
