@@ -1,0 +1,48 @@
+1class Solution {
+2public:
+3    int count(string str) {
+4        int count = 0;
+5        int vowel = 0;
+6        vowel |= (1 << ('a'-'a'));
+7        vowel |= (1 << ('e'-'a'));
+8        vowel |= (1 << ('i'-'a'));
+9        vowel |= (1 << ('u'-'a'));
+10        vowel |= (1 << ('o'-'a'));
+11
+12        for (char& ch : str) {
+13            if (vowel & (1 << (ch - 'a'))) {
+14                count++;
+15            }
+16        }
+17
+18        return count;
+19    }
+20
+21    string reverseWords(string s) {
+22
+23        stringstream ss(s);
+24        string word;
+25        string ans = "";
+26        bool first = true;
+27        int vowel = 0;
+28        while (ss >> word) {
+29            if (first) {
+30                first = false;
+31                vowel = count(word);
+32
+33                ans += word;
+34            } else {
+35
+36                    ans += " ";
+37                if (count(word) == vowel) {
+38                    reverse(word.begin(), word.end());
+39                   
+40                }
+41
+42                ans += word;
+43            }
+44        }
+45
+46        return ans;
+47    }
+48};
