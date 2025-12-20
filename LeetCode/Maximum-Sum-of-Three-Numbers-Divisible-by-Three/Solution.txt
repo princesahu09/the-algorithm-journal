@@ -1,0 +1,30 @@
+1class Solution {
+2public:
+3    int maximumSum(vector<int>& nums) {
+4        vector<int>rem0,rem1,rem2;
+5        for(int i=0;i<nums.size();i++){
+6            if(nums[i]%3==0) rem0.push_back(nums[i]);
+7            if(nums[i]%3==1) rem1.push_back(nums[i]);
+8            if(nums[i]%3==2) rem2.push_back(nums[i]);
+9        }
+10        sort(rem0.rbegin(), rem0.rend());
+11        sort(rem1.rbegin(), rem1.rend());
+12        sort(rem2.rbegin(), rem2.rend());
+13
+14        int ans = 0;
+15
+16        if (rem0.size() >= 3)
+17        ans = max(ans, rem0[0] + rem0[1] + rem0[2]);
+18
+19        if (rem1.size() >= 3)
+20        ans = max(ans, rem1[0] + rem1[1] + rem1[2]);
+21
+22        if (rem2.size() >= 3)
+23        ans = max(ans, rem2[0] + rem2[1] + rem2[2]);
+24
+25        if (!rem0.empty() && !rem1.empty() && !rem2.empty())
+26        ans = max(ans, rem0[0] + rem1[0] + rem2[0]);
+27
+28        return ans;
+29    }
+30};
