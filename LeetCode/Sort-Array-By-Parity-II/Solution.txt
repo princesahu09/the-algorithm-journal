@@ -1,0 +1,19 @@
+1class Solution {
+2public:
+3    vector<int> sortArrayByParityII(vector<int>& nums) {
+4        int n = nums.size();
+5        int i = 0, j = 1;
+6        while(i < n && j < n) {
+7            if(nums[i] % 2 == 0) {
+8                i += 2;
+9            }
+10            else if(nums[j] % 2 == 1) {
+11                j += 2;
+12            }
+13            else {
+14                swap(nums[i], nums[j]);
+15            }
+16        }
+17        return nums;
+18    }
+19};
