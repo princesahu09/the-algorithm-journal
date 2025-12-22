@@ -1,0 +1,17 @@
+1class Solution {
+2public:
+3    int findMiddleIndex(vector<int>& nums) {
+4        int total_sum = 0;
+5        for(int i=0;i<nums.size();i++){
+6            total_sum += nums[i];
+7        }
+8        int current_sum = 0;
+9        for(int i=0;i<nums.size();i++){
+10            int rem = total_sum - current_sum;
+11            current_sum += nums[i];
+12
+13            if(current_sum == rem) return i;
+14       }
+15       return -1;
+16    }
+17};
