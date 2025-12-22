@@ -12,33 +12,25 @@
 12    int numberOfBeams(vector<string>& bank){
 13
 14        const int n=bank.size();
-15        vector<int>temp(n,0);
-16
-17        for(int i=0;i<n;i++)
-18        {
-19            temp[i]=NumberOfDevice(bank[i]);
-20        }
-21
-22        int ans=0;
-23        int prev=0;
-24        
-25        for(int i=0;i<n;i++)
-26        {
-27
-28            if(temp[i]>0)
-29            {
-30                ans+=prev*temp[i];
-31                prev=temp[i];
+15        
+16        int ans=0;
+17        int prev=0;
+18
+19        for(int i=0;i<n;i++)
+20        {
+21            int curr=NumberOfDevice(bank[i]);
+22            if(curr>0)
+23            {
+24                ans+=prev*curr;
+25                prev=curr;
+26
+27            }
+28        }
+29
+30       
+31        
 32
-33            }
-34
-35
-36            
-37            
-38
-39        }
-40
-41
-42        return ans;
-43    }
-44};
+33
+34        return ans;
+35    }
+36};
