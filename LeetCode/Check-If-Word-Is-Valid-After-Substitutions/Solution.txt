@@ -1,0 +1,16 @@
+1class Solution {
+2public:
+3    bool isValid(string s) {
+4        vector<char>st;
+5        for(char c:s){
+6            st.push_back(c);
+7            int n = st.size();
+8            if(n>=3 && st[n-3]=='a' && st[n-2]=='b' && st[n-1]=='c'){
+9                st.pop_back();
+10                st.pop_back();
+11                st.pop_back();
+12            }
+13        }
+14        return st.empty();
+15    }
+16};
