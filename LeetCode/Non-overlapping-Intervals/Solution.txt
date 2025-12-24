@@ -1,0 +1,33 @@
+1class Solution {
+2public:
+3    int eraseOverlapIntervals(vector<vector<int>>& x) {
+4
+5        if(x.size()==0){
+6            return 0;
+7        }
+8
+9        int m=x.size();
+10        // int n=x[0].size();
+11        // int t=m*n;
+12
+13      sort(x.begin(), x.end(),
+14     [](vector<int>& a, vector<int>& b) {
+15         return a[1] < b[1];   
+16     });
+17     int count=1;
+18     int p=x[0][1];
+19     for(int i=1;i<x.size();i++){
+20        if(x[i][0]>=p){
+21            count++;
+22            p=x[i][1];
+23        }else{
+24            continue;
+25        }
+26
+27     }
+28
+29return m-count;
+30        
+31
+32    }
+33};
