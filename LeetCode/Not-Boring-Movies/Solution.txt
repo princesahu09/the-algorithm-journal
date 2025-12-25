@@ -1,0 +1,5 @@
+1# Write your MySQL query statement below
+2select * 
+3from Cinema 
+4where id%2 = 1 && description != 'boring'
+5order by rating desc;
