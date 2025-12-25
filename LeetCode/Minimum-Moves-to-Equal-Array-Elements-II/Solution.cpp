@@ -11,7 +11,7 @@
 11
 12        for(auto &i:nums)
 13        {
-14            move+=abs(i-nums[n/2]);
+14            move+=i>=nums[n/2]?i-nums[n/2]:nums[n/2]-i;
 15        }
 16        return move;
 17        
