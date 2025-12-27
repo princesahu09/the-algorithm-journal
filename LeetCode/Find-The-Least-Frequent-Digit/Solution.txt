@@ -1,0 +1,21 @@
+1class Solution {
+2public:
+3    int getLeastFrequentDigit(int n) {
+4        string s = to_string(n);
+5        unordered_map<char,int>mp;
+6        for(int i=0;i<s.size();i++){
+7            mp[s[i]]++;
+8        }
+9        int mini = INT_MAX;
+10        for(auto& p:mp){
+11            mini = min(mini,p.second);
+12        }
+13        int res = INT_MAX;
+14        for(auto& it:mp){
+15            if(it.second == mini){
+16                res = min(res,it.first-'0');
+17            }
+18        }
+19        return res;
+20    }
+21};
