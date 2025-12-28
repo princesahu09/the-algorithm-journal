@@ -1,0 +1,32 @@
+1class Solution {
+2public:
+3    long long maximumScore(vector<int>& nums) {
+4        typedef long long ll;
+5
+6        const int n = nums.size();
+7        vector<ll> prefixSum(n, 0);
+8        vector<ll> suffixMin(n, 0);
+9
+10        ll sum = nums[0];
+11        prefixSum[0] = sum;
+12
+13        for (int i = 1; i < n; i++) {
+14            sum += nums[i];
+15            prefixSum[i] = sum;
+16        }
+17        suffixMin[n-1] = nums[n-1];
+18        int low = nums[n-1];
+19
+20        for (int i = n-2; i >=0; i--) {
+21            low = min(low, nums[i]);
+22            suffixMin[i] = low;
+23        }
+24        ll ans = LLONG_MIN;
+25        for (int i = 0; i < n-1; i++) {
+26            ll score = prefixSum[i] - suffixMin[i+1];
+27            ans = max(ans, score);
+28        }
+29
+30        return ans;
+31    }
+32};
