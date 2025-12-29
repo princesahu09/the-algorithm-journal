@@ -11,7 +11,7 @@
 11        for(int i=0;i<word.size();i++)
 12        {
 13            number=(number*10+(word[i]-'0'))%m;
-14            if(number%m==0)
+14            if(number==0)
 15            {
 16                prefix[i]=1;
 17
