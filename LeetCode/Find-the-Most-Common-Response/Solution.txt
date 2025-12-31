@@ -1,0 +1,21 @@
+1class Solution {
+2public:
+3    string findCommonResponse(vector<vector<string>>& responses) {
+4          unordered_map<string,int>mp;
+5          for(auto& row:responses){
+6             set<string>st(row.begin(),row.end());
+7             for(auto&freq:st){
+8                 mp[freq]++;
+9             }
+10          }
+11          int maxi = INT_MIN;
+12          string ans = "";
+13          for(auto& it:mp){
+14             if(it.second > maxi || it.second == maxi && it.first < ans){
+15                maxi = it.second;
+16                ans = it.first;
+17             }
+18          }
+19          return ans;
+20    }
+21};
