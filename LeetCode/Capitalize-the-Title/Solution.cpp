@@ -1,49 +1,34 @@
 1class Solution {
 2public:
-3
-4string big(string &str)
-5{
-6    for(int i=0;i<str.size();i++)
-7    {
-8        str[i]=str[i]|' ';
-9
-10    }
+3    void big(string  &str) {
+4        for (int i = 0; i < str.size(); i++) {
+5            str[i] = str[i] | ' ';
+6        }
+7
+8         
+9    }
+10    string capitalizeTitle(string title) {
 11
-12    
+12        string ans = "";
 13
-14    return str;
-15}
-16    string capitalizeTitle(string title) {
-17
-18        string ans="";
-19
-20        stringstream ss(title);
-21        string word;
-22
-23        while(ss>>word)
-24        {
-25
-26              word=big(word);
-27            if(word.size()>2)
-28            {
-29                
-30              
-31               word[0]&='_';
-32                ans+=word;
-33
-34            }
-35            else
-36            {
-37
-38               
-39                ans+=word;
-40
-41            }
-42                ans+=' ';
-43
-44        }
-45        ans.pop_back();
-46        return ans;
-47        
-48    }
-49};
+14        stringstream ss(title);
+15        string word;
+16
+17        while (ss >> word) {
+18
+19            big(word);
+20            if (word.size() > 2) {
+21
+22                word[0] &= '_';
+23                ans += word;
+24
+25            } else {
+26
+27                ans += word;
+28            }
+29            ans += ' ';
+30        }
+31        ans.pop_back();
+32        return ans;
+33    }
+34};
