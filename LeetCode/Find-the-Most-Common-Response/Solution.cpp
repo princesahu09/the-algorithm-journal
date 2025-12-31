@@ -14,16 +14,16 @@
 14            }
 15        }
 16
-17        vector<pair<string,int>>vec(record.begin(),record.end());
-18
-19        sort(vec.begin(),vec.end(),[](auto &a,auto &b){
-20
-21            if(a.second==b.second)
-22            return a.first<b.first;
-23            return a.second>b.second;
-24        });
-25        pair<string,int>ans= vec.front();
+17        string ans = "";
+18        int best = 0;
+19
+20        for (auto& p : record) {
+21            if (p.second > best || (p.second == best && p.first < ans)) {
+22                best = p.second;
+23                ans = p.first;
+24            }
+25        }
 26
-27        return ans.first;
+27        return ans;
 28    }
 29};
