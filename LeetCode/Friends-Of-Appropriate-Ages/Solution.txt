@@ -1,0 +1,24 @@
+1class Solution {
+2public:
+3    int numFriendRequests(vector<int>& ages) {
+4        vector<int> cnt(121, 0);
+5        for (int age : ages) cnt[age]++;
+6
+7        int total = 0;
+8
+9        for (int x = 0; x < 121; x++) {
+10            for (int y = 0; y < 121; y++) {
+11                if (y <= 0.5 * x + 7) continue;
+12                if (y > x) continue;
+13                if (y > 100 && x < 100) continue;
+14
+15                if (x == y)
+16                    total += cnt[x] * (cnt[x] - 1);
+17                else
+18                    total += cnt[x] * cnt[y];
+19            }
+20        }
+21        return total;
+22    }
+23};
+24
