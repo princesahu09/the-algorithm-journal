@@ -5,25 +5,23 @@
 5        unordered_map<string, int> record;
 6
 7        for (auto& i : responses) {
-8            unordered_set<string> review;
-9            for (auto& j : i) {
-10                review.insert(j);
-11            }
-12            for (auto& k : review) {
-13                record[k]++;
-14            }
-15        }
-16
-17        string ans = "";
-18        int best = 0;
-19
-20        for (auto& p : record) {
-21            if (p.second > best || (p.second == best && p.first < ans)) {
-22                best = p.second;
-23                ans = p.first;
-24            }
-25        }
-26
-27        return ans;
-28    }
-29};
+8            unordered_set<string> review(i.begin(),i.end());
+9           
+10            for (auto& k : review) {
+11                record[k]++;
+12            }
+13        }
+14
+15        string ans = "";
+16        int best = 0;
+17
+18        for (auto& p : record) {
+19            if (p.second > best || (p.second == best && p.first < ans)) {
+20                best = p.second;
+21                ans = p.first;
+22            }
+23        }
+24
+25        return ans;
+26    }
+27};
