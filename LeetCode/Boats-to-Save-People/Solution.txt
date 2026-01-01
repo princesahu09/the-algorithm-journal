@@ -1,0 +1,20 @@
+1class Solution {
+2public:
+3    int numRescueBoats(vector<int>& people, int limit) {
+4        sort(people.begin(),people.end());
+5        int total = 0;
+6        int i = 0;
+7        int j = people.size()-1;
+8        while(i<=j){
+9            if(people[i] + people[j] <= limit){
+10                i++;
+11                j--;
+12            }
+13            else{
+14                j--;
+15            }
+16            total++;
+17        }
+18        return total;
+19    }
+20};
