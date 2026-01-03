@@ -1,0 +1,23 @@
+1class Solution {
+2public:
+3    vector<vector<int>> generate(int numRows) {
+4       vector<vector<int>> a;
+5       if(numRows==0) return a;
+6        a.push_back(vector<int>());
+7        a[0].push_back(1);
+8
+9      for(int i=1;i<numRows;i++){
+10         a.push_back(vector<int>());
+11        for(int j=-1;j<i;j++){
+12           if(j==-1 || j==i-1){
+13            a[i].push_back(1);
+14           }
+15           else{
+16             a[i].push_back(a[i-1][j]+a[i-1][j+1]);
+17           }
+18        }
+19      }
+20      return a;
+21
+22    }
+23};
