@@ -8,11 +8,11 @@
 8        int ans=0;
 9        
 10
-11
-12        for(int &n:nums)
-13        {
-14            int counter=0;
-15            int sum_of_divisor=0;
+11            int counter=0;
+12            int sum_of_divisor=0;
+13
+14        for(int &n:nums)
+15        {
 16
 17            for(int i=1;i*i<=n;i++)
 18            {
@@ -38,14 +38,20 @@
 38                    }
 39                }
 40            }
-41            if(counter==4)
-42            {
-43                ans+=sum_of_divisor;
-44            }
-45        }
-46        return ans;
-47
-48    
-49        
-50    }
-51};
+41
+42            
+43
+44            if(counter==4)
+45            {
+46                ans+=sum_of_divisor;
+47            }
+48
+49            counter=0;
+50            sum_of_divisor=0;
+51        }
+52        return ans;
+53
+54    
+55        
+56    }
+57};
