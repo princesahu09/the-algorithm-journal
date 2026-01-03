@@ -1,0 +1,38 @@
+1class Solution {
+2public:
+3    int minLength(vector<int>& nums, int k) {
+4
+5        const int n = nums.size();
+6        int left = 0;
+7
+8        int ans = INT_MAX;
+9
+10        int distinctSum = 0;
+11
+12        unordered_map<int, int> freq;
+13
+14        for (int right = 0; right < n; right++) {
+15            freq[nums[right]]++;
+16
+17            if (freq[nums[right]] == 1) {
+18                distinctSum += nums[right];
+19            }
+20
+21            while (distinctSum >= k) {
+22                ans = min(ans, right - left + 1);
+23                freq[nums[left]]--;
+24
+25                if (freq[nums[left]] == 0) {
+26                    distinctSum -= nums[left];
+27                }
+28
+29                left++;
+30            }
+31        }
+32
+33        if (ans == INT_MAX)
+34            return -1;
+35        else
+36            return ans;
+37    }
+38};
