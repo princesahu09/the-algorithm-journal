@@ -1,0 +1,16 @@
+1class Solution {
+2public:
+3    string largestEven(string s) {
+4        const int n = s.size();
+5
+6        for (int i = n - 1; i >= 0; i--) {
+7            int number = s[i] - '0';
+8            if (number % 2 == 0) {
+9                return s.substr(0, i + 1);
+10            }
+11        }
+12
+13        return "";
+14    }
+15};
+16
