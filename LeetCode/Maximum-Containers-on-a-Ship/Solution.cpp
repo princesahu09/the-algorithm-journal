@@ -3,10 +3,10 @@
 3    int maxContainers(int n, int w, int maxWeight) {
 4
 5
-6        int total=n*n*w;
+6        
 7
 8
-9        if(total<maxWeight)
+9        if(n*n*w<maxWeight)
 10        {
 11            return n*n;
 12        }
