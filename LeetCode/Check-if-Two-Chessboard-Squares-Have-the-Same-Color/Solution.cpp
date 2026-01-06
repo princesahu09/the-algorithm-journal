@@ -1,0 +1,1 @@
+return (row1 + col1)%2==(row2 + col2)%2;
