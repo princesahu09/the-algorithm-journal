@@ -13,20 +13,19 @@
 13
 14        sort(diff.begin(), diff.end());
 15
-16        for(int i=0;i<n;i++)
-17        {
-18            if(additionalRocks>=diff[i])
-19            {
-20                additionalRocks-=diff[i];
-21                diff[i]=0;
+16        int ans = 0;
+17        for (int i = 0; i < n; i++) {
+18            if (additionalRocks >= diff[i]) {
+19                additionalRocks -= diff[i];
+20                diff[i] = 0;
+21                ans++;
 22            }
-23        }
-24        int ans = 0;
-25
-26        for (auto& i : diff) {
-27            if (i == 0)
-28                ans++;
-29        }
-30        return ans;
-31    }
-32};
+23            
+24            else
+25            break;
+26        }
+27
+28        
+29        return ans;
+30    }
+31};
