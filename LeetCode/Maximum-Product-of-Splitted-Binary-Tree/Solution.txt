@@ -1,0 +1,62 @@
+1/**
+2 * Definition for a binary tree node.
+3 * struct TreeNode {
+4 *     int val;
+5 *     TreeNode *left;
+6 *     TreeNode *right;
+7 *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+8 *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+9 *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+10 * };
+11 */
+12
+13const int MOD=1000000007;
+14 void find(TreeNode* root,long long &sum){
+15    if(root==nullptr){
+16        return;
+17    }
+18    sum+=(root->val);
+19    find(root->left,sum);
+20    find(root->right,sum);
+21
+22 }
+23
+24 long long mulfind(TreeNode *root,long long &ans,long long &sum){
+25    if(root==nullptr){
+26        return 0;
+27    }
+28
+29
+30    
+31    long long x=mulfind(root->left,ans,sum);
+32    if(x!=0){
+33        long long a=1LL*(sum-x)*x;
+34      
+35        ans=max(a,ans);
+36    }
+37    long long y=mulfind(root->right,ans,sum);
+38    if(y!=0){
+39        long long a=1LL*(sum-y)*y;
+40   
+41        ans=max(a,ans);
+42    }
+43    return (x+y+root->val);
+44
+45 }
+46
+47 
+48class Solution {
+49public:
+50    int maxProduct(TreeNode* root) {
+51        long long sum=0;
+52        find(root,sum);
+53
+54        long long ans=0;
+55
+56        long long x=mulfind(root,ans,sum);
+57
+58        return ans%MOD;
+59
+60
+61    }
+62};
