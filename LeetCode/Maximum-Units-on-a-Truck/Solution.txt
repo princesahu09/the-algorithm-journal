@@ -1,0 +1,23 @@
+1 bool sorting(vector<int>& a,vector<int>& b){
+2        return a[1]>b[1];
+3}
+4
+5class Solution {
+6public:
+7    int maximumUnits(vector<vector<int>>& boxTypes, int truckSize) {
+8            sort(boxTypes.begin(),boxTypes.end(),sorting);
+9            int total = 0;
+10            for(int i=0;i<boxTypes.size();i++){
+11                if(boxTypes[i][0] <= truckSize){
+12                    total += boxTypes[i][0] * boxTypes[i][1];
+13                    truckSize -= boxTypes[i][0];
+14                }
+15                else{
+16                    total += truckSize * boxTypes[i][1];
+17                    truckSize = 0;
+18                }
+19                if(truckSize == 0) break;
+20            }
+21        return total;
+22    }
+23};
