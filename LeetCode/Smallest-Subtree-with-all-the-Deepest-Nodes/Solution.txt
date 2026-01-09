@@ -1,0 +1,49 @@
+1/**
+2 * Definition for a binary tree node.
+3 * struct TreeNode {
+4 *     int val;
+5 *     TreeNode *left;
+6 *     TreeNode *right;
+7 *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+8 *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+9 *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+10 * };
+11 */
+12class Solution {
+13public:
+14    unordered_map<TreeNode*, TreeNode*> parent;
+15    unordered_map<TreeNode*, int> depth;
+16    int maxDepth = 0;
+17
+18    void dfs(TreeNode* node, TreeNode* par, int d) {
+19        if (!node) return;
+20        parent[node] = par;
+21        depth[node] = d;
+22        maxDepth = max(maxDepth, d);
+23        dfs(node->left, node, d + 1);
+24        dfs(node->right, node, d + 1);
+25    }
+26
+27    TreeNode* subtreeWithAllDeepest(TreeNode* root) {
+28        dfs(root, nullptr, 0);
+29
+30        vector<TreeNode*> deepest;
+31        for (auto &it : depth) {
+32            if (it.second == maxDepth)
+33                deepest.push_back(it.first);
+34        }
+35
+36        unordered_set<TreeNode*> curr(deepest.begin(), deepest.end());
+37
+38        while (curr.size() > 1) {
+39            unordered_set<TreeNode*> next;
+40            for (auto node : curr) {
+41                next.insert(parent[node]);
+42            }
+43            curr = next;
+44        }
+45
+46        return *curr.begin();
+47    }
+48};
+49
