@@ -1,0 +1,29 @@
+1int find(int i , int j , vector<int> &nums1,vector<int> &nums2,vector<vector<int>> &dp){
+2    if(i==nums1.size() || j==nums2.size()){
+3        return INT_MIN;
+4    }
+5    if(dp[i][j]!=INT_MIN){
+6        return dp[i][j];
+7    }
+8    int x,y,z;
+9    
+10    int take=(nums1[i]*nums2[j]);
+11    x=find(i+1,j+1,nums1,nums2,dp);
+12     
+13    if (x != INT_MIN)
+14        take = max(take, nums1[i] * nums2[j] + x); 
+15    
+16    y=find(i+1,j,nums1,nums2,dp);
+17    z=find(i,j+1,nums1,nums2,dp);
+18   
+19    return dp[i][j]=max(take,max(y,z));
+20}
+21class Solution {
+22public:
+23    int maxDotProduct(vector<int>& nums1, vector<int>& nums2) {
+24        int m=(nums1[0]*nums2[0]);
+25        int curr=0;
+26        vector<vector<int>> dp(nums1.size(),vector<int> (nums2.size(),INT_MIN));
+27        return find(0,0,nums1,nums2,dp);
+28    }
+29};
