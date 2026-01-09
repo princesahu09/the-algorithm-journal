@@ -1,0 +1,49 @@
+1class Fancy {
+2public:
+3    vector<pair<int,int>> a;
+4    vector<pair<int,char>> op;
+5    Fancy() {
+6        
+7    }
+8    
+9    void append(int val) {
+10        a.push_back({val,op.size()});
+11    }
+12    
+13    void addAll(int inc) {
+14        op.push_back({inc,'+'});
+15    }
+16    
+17    void multAll(int m) {
+18        op.push_back({m,'x'});
+19    }
+20    
+21    int getIndex(int idx) {
+22        if(a.size()==0 || idx>=a.size()){
+23             return -1;
+24        }
+25        long long val=a[idx].first;
+26        for(int i=a[idx].second;i<op.size();i++){
+27                  if(op[i].second=='+'){
+28                      val+=(op[i].first);
+29                  }
+30                  else{
+31                      val*=(1LL*op[i].first);
+32                      val=val%1000000007;
+33                  }
+34        }
+35        a[idx].first=val;
+36        a[idx].second=op.size();
+37
+38        return val%1000000007;
+39    }
+40};
+41
+42/**
+43 * Your Fancy object will be instantiated and called as such:
+44 * Fancy* obj = new Fancy();
+45 * obj->append(val);
+46 * obj->addAll(inc);
+47 * obj->multAll(m);
+48 * int param_4 = obj->getIndex(idx);
+49 */
