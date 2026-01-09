@@ -1,6 +1,27 @@
 1class Solution {
 2public:
 3    bool stoneGame(vector<int>& piles) {
-4        return true;
-5    }
-6};
+4
+5
+6        int alice=0;
+7        int bob=0;
+8        int start=0;
+9        int end=piles.size()-1;
+10
+11
+12        for(int i=0;i<piles.size()/2;i++)
+13        {
+14
+15            int high=max(piles[start],piles[end]);
+16            int low=min(piles[start],piles[end]);
+17            alice+=high;
+18            bob+=low;
+19            start++;
+20            end--;
+21            
+22        }
+23
+24        return alice>bob?true:false;
+25        
+26    }
+27};
