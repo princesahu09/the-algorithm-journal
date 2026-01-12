@@ -23,8 +23,8 @@
 23            }
 24            else
 25            {
-26                int adder=abs(nums[i]-nums[i+1]);
-27                adder+=1;
+26                int adder=nums[i]-nums[i+1]+1;
+27                
 28                ans+=adder;
 29                nums[i+1]+=adder;
 30
