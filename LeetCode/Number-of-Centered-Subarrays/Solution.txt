@@ -1,0 +1,20 @@
+1class Solution {
+2public:
+3    int centeredSubarrays(vector<int>& nums) {
+4        int total = 0;
+5        unordered_map<int,int>mp;
+6        for(int i=0;i<nums.size();i++){
+7            int sum = 0;
+8            unordered_set<int>st;
+9            for(int j=i;j<nums.size();j++){
+10              sum += nums[j];
+11              st.insert(nums[j]);
+12
+13              if(st.count(sum)){
+14                total++;
+15              }
+16            }
+17        }
+18        return total;
+19    }
+20};
