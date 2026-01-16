@@ -1,0 +1,17 @@
+1class Solution {
+2public:
+3    int minTimeToType(string word) {
+4
+5        int ans = 0;
+6        char starter = 'a';
+7
+8        for (auto& i : word) {
+9            int clock = abs((starter - 'a') - (i - 'a'));
+10
+11            ans += min(clock, 26 - clock) + 1;
+12            starter = i;
+13        }
+14
+15        return ans;
+16    }
+17};
