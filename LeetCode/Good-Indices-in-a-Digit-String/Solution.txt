@@ -1,0 +1,36 @@
+1class Solution {
+2public:
+3    vector<int> goodIndices(string s) {
+4        int n = s.size();
+5        vector<int> res;
+6
+7        for (int i = 0; i < n; i++) {
+8            int x = i;
+9            int len = 0;
+10
+11            // count digits of i
+12            do {
+13                len++;
+14                x /= 10;
+15            } while (x > 0);
+16
+17            if (i - len + 1 < 0) continue;
+18
+19            // compare digits from right to left
+20            x = i;
+21            bool ok = true;
+22            for (int j = 0; j < len; j++) {
+23                if (s[i - j] != char('0' + (x % 10))) {
+24                    ok = false;
+25                    break;
+26                }
+27                x /= 10;
+28            }
+29
+30            if (ok) res.push_back(i);
+31        }
+32
+33        return res;
+34    }
+35};
+36
