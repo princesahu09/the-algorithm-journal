@@ -1,0 +1,32 @@
+1class Solution {
+2public:
+3    vector<long long> getDistances(vector<int>& arr) {
+4        unordered_map<int,int> a;
+5        unordered_map<int,int> b;
+6        unordered_map<int,long long> c;
+7        unordered_map<int,long long> d;
+8         vector<long long> ans;
+9        for(int i=0 ; i<arr.size();i++){
+10           
+11            if(b.count(arr[i])){
+12                c[i]+=(a[arr[i]]*abs(i-b[arr[i]]))+c[b[arr[i]]];
+13            }
+14            a[arr[i]]++;
+15            b[arr[i]]=i;
+16        }
+17        a.clear();
+18        b.clear();
+19        for(int i=arr.size()-1;i>=0;i--){
+20            if(b.count(arr[i])){
+21                d[i]+=(a[arr[i]]*abs(i-b[arr[i]]))+d[b[arr[i]]];
+22            }
+23            a[arr[i]]++;
+24            b[arr[i]]=i;
+25        }
+26         for(int i=0;i<arr.size();i++){
+27            ans.push_back(c[i]+d[i]); 
+28        }
+29        return ans;
+30        
+31    }
+32};
