@@ -1,0 +1,61 @@
+1void find(int u, vector<int> &dist, vector<vector<int>> &adj) {
+2    queue<int> q;
+3    q.push(u);
+4    dist[u]=0;
+5    
+6    while(!q.empty()){
+7         int x = q.front();
+8        q.pop();
+9        for(int i=0;i<adj[x].size();i++){
+10            int v=adj[x][i];
+11            if (dist[v] == -1) {
+12                    dist[v] = dist[x] + 1; 
+13                    q.push(v);
+14                }
+15        }
+16    }
+17}
+18
+19
+20
+21class Solution {
+22public:
+23    int specialNodes(int n, vector<vector<int>>& edges, int x, int y, int z) {
+24        vector<int> xs(n,-1);
+25        vector<int> ys(n,-1);
+26        vector<int> zs(n,-1);
+27
+28        vector<vector<int>> adj(n);
+29        for(int i=0;i<edges.size();i++){
+30            adj[edges[i][0]].push_back(edges[i][1]);
+31            adj[edges[i][1]].push_back(edges[i][0]);
+32        }
+33
+34        find(x,xs,adj);
+35        find(y,ys,adj);
+36        find(z,zs,adj);
+37         
+38         int ans=0;
+39         for(int i=0;i<n;i++){
+40            int a=xs[i];
+41            int b=ys[i];
+42            int c=zs[i];
+43             if (a == -1 || b == -1 || c == -1) continue;
+44
+45           vector<int> p={a,b,c};
+46           sort(p.begin(),p.end());
+47        
+48           if((1LL*p[0]*p[0])+(1LL*p[1]*p[1])==(1LL*p[2]*p[2])){
+49              ans++;
+50           }
+51
+52
+53         }
+54
+55
+56
+57        return ans;
+58
+59        
+60    }
+61};
