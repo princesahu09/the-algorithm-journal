@@ -13,8 +13,8 @@
 13        if (rider.empty() || driver.empty())
 14            return {-1, -1};
 15
-16        int ride = rider.front();
-17        int drive = driver.front();
+16      const  int ride = rider.front();
+17       const  int drive = driver.front();
 18        rider.pop_front();
 19        driver.pop_front();
 20
