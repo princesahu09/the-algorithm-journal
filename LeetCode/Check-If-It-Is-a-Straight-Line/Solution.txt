@@ -1,0 +1,13 @@
+1class Solution {
+2public:
+3    bool checkStraightLine(vector<vector<int>>& coordinates) {
+4        int dx = (coordinates[1][1] - coordinates[0][1]);
+5        int dy = (coordinates[1][0] - coordinates[0][0]);
+6        for(int i=2; i<coordinates.size(); i++)
+7        {
+8            if(dx*(coordinates[i][0] - coordinates[1][0]) != dy*(coordinates[i][1] - coordinates[1][1]))
+9                return false;
+10        }
+11        return true;
+12    }
+13};
