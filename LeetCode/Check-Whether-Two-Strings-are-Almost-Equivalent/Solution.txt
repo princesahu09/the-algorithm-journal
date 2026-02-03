@@ -1,0 +1,19 @@
+1class Solution {
+2public:
+3    bool checkAlmostEquivalent(string word1, string word2) {
+4        unordered_map<char,int>a;
+5        unordered_map<char,int>b;
+6        for(int i=0;i<word1.size();i++){
+7            a[word1[i]]++;
+8        }
+9        for(int i=0;i<word2.size();i++){
+10            b[word2[i]]++;
+11        }
+12        for(char c='a';c<='z';c++){
+13            if(abs(a[c] - b[c]) > 3){
+14                return false;
+15            }
+16        }
+17        return true;
+18    }
+19};
