@@ -10,12 +10,11 @@
 10        }
 11
 12        int ans=0;
-13        while(bitmask>0)
-14        {
-15            if(bitmask&1)ans++;
-16            bitmask>>=1;
-17        }
-18        return ans;
-19        
-20    }
-21};
+13       for(int i=0;i<32;i++)
+14       {
+15        if(bitmask&(1<<i))ans++;
+16       }
+17        return ans;
+18        
+19    }
+20};
