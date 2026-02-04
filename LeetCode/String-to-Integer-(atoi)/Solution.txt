@@ -1,0 +1,38 @@
+1class Solution {
+2public:
+3    int myAtoi(string s) {
+4        long long num = 0;  
+5        bool neg = false;
+6        int i = 0;
+7
+8        
+9        while (i < s.size() && s[i] == ' ') {
+10            i++;
+11        }
+12
+13       
+14        if (i >= s.size()) return 0;
+15
+16       
+17        if (s[i] == '-') {
+18            neg = true;
+19            i++;
+20        } else if (s[i] == '+') {
+21            i++;
+22        }
+23
+24       
+25        while (i < s.size() && s[i] >= '0' && s[i] <= '9') {
+26            num = num * 10 + (s[i] - '0');
+27
+28            
+29            if (num > INT_MAX) {
+30                return neg ? INT_MIN : INT_MAX;
+31            }
+32            i++;
+33        }
+34
+35        
+36        return neg ? -num : num;
+37    }
+38};
