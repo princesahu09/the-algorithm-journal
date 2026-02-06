@@ -14,7 +14,7 @@
 14            adjlist[v].insert(u);
 15        }
 16
-17        int counter=0;
+17       
 18        for(auto &i:adjlist)
 19        {
 20
