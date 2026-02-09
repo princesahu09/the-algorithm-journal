@@ -1,0 +1,1 @@
+onesRow0 + onesCol0 - zerosRow0 - zerosCol0
