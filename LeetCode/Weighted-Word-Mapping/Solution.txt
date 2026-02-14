@@ -1,0 +1,21 @@
+1class Solution {
+2public:
+3    int summation(string& str, vector<int>& weights) {
+4        int ans = 0;
+5
+6        for (auto& i : str) {
+7            ans += weights[i - 'a'];
+8        }
+9        return ans;
+10    }
+11    string mapWordWeights(vector<string>& words, vector<int>& weights) {
+12
+13        string ans = "";
+14        for (int i = 0; i < words.size(); i++) {
+15            int sum = summation(words[i], weights);
+16            ans += 'a' + (25 - sum % 26);
+17        }
+18        return ans;
+19    }
+20
+21};
