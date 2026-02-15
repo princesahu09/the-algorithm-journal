@@ -1,24 +1,22 @@
 1class Solution {
 2public:
 3    string addBinary(string a, string b) {
-4         string result = "";
-5        int i = a.size() - 1;
-6        int j = b.size() - 1;
-7        int carry = 0;
-8        
-9        while (i >= 0 || j >= 0 || carry) {
-10            int sum = carry;
-11            
-12            if (i >= 0) sum += (a[i] - '0'); 
-13            i--;
-14            if (j >= 0) sum += (b[j] - '0'); 
-15            j--;
-16            result += (sum % 2) + '0'; 
-17            carry = sum / 2; 
-18        }
-19        
-20        reverse(result.begin(), result.end());
-21        return result;
-22        
-23    }
-24};
+4        string ans;
+5        int c = 0;
+6        for (int i = 1; i <= a.length() || i <= b.length(); ++i) {
+7            if (i <= a.length()) {
+8                c += a[a.length() - i] - '0';
+9            }
+10            if (i <= b.length()) {
+11                c += b[b.length() - i] - '0';
+12            }
+13            ans.push_back((c & 1) + '0');
+14            c >>= 1;
+15        }
+16        ans.push_back(c + '0');
+17        while (ans.length() > 1 && ans.back() == '0') ans.pop_back();
+18        reverse(ans.begin(), ans.end());
+19        return ans;
+20    }
+21        
+22};
