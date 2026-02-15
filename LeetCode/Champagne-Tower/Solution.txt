@@ -1,0 +1,26 @@
+1class Solution {
+2    const int eps = 1.e-8;
+3public:
+4    double champagneTower(int poured, int query_row, int query_glass) {
+5        vector<vector<double>> v(2);
+6        v[0] = {(double) poured};
+7        for (int i = 0, last = 0; i < 100; ++i) {
+8            if (i == query_row) {
+9                return min(1.0, v[last][query_glass]);
+10            }
+11            const int now = last ^ 1;
+12            v[now] = vector<double>(i + 2);
+13            for (int j = 0; j <= i; ++j) {
+14                if (v[last][j] >= 1 + eps) {
+15                    const double d = (v[last][j] - 1.) / 2;
+16                    v[now][j] += d;
+17                    v[now][j + 1] += d;
+18                }
+19            }
+20            last ^= 1;
+21
+22        }
+23        return 0;
+24        
+25    }
+26};
