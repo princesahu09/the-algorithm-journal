@@ -1,0 +1,21 @@
+1class Solution {
+2public:
+3    vector<int> toggleLightBulbs(vector<int>& bulbs) {
+4
+5        unordered_map<int, int> mp;
+6        
+7        for (auto& i : bulbs) {
+8            mp[i]++;
+9        }
+10        vector<int> ans;
+11
+12        for (auto& i : mp) {
+13            if (i.second %2==1
+14               ) {
+15                ans.push_back(i.first);
+16            }
+17        }
+18        sort(ans.begin(), ans.end());
+19        return ans;
+20    }
+21};
