@@ -1,0 +1,21 @@
+1class Solution {
+2public:
+3    vector<int> corpFlightBookings(vector<vector<int>>& bookings, int n) {
+4        vector<int> ans(n, 0);
+5        for (auto &b : bookings) {
+6            int first = b[0] - 1;
+7            int last = b[1] - 1;
+8            int seats = b[2];
+9
+10            ans[first] += seats;
+11            if (last + 1 < n) {
+12                ans[last + 1] -= seats;
+13            }
+14        }
+15        for (int i = 1; i < n; i++) {
+16            ans[i] += ans[i - 1];
+17        }
+18        return ans;
+19    }
+20};
+21
