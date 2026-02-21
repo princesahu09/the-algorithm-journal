@@ -8,15 +8,12 @@
 8        }
 9        int count = 0;
 10
-11        while (x > 0 || k > 0) {
-12            int r = x & 1;
-13            int n = k & 1;
-14            if (r != n) {
-15                count++;
-16            }
-17            x >>= 1;
-18            k >>= 1;
-19        }
-20        return count;
-21    }
-22};
+11      for(int i=0;i<32;i++)
+12      {
+13        int r=(x>>i)&1;
+14        int d=(k>>i)&1;
+15        if(r!=d)count++;
+16      }
+17        return count;
+18    }
+19};
