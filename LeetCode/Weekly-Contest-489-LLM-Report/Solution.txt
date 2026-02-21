@@ -1,0 +1,34 @@
+1class Solution {
+2public:
+3    vector<int> toggleLightBulbs(vector<int>& bulbs) {
+4        // There are 100 bulbs, numbered 1 to 100.
+5        // We can use a boolean vector to represent their states (ON/OFF).
+6        // We use a size of 101 to allow for 1-based indexing (indices 1 to 100),
+7        // matching the bulb numbers. Index 0 will be unused.
+8        // 'false' represents OFF (initial state), 'true' represents ON.
+9        vector<bool> states(101, false);
+10
+11        // Process each operation from the input array.
+12        // Each number in 'bulbs' corresponds to a toggle operation.
+13        for (int bulb_num : bulbs) {
+14            // Toggle the state of the bulb.
+15            states[bulb_num] = !states[bulb_num];
+16        }
+17
+18        // Collect the numbers of the bulbs that are ON in the end.
+19        vector<int> result;
+20        
+21        // Iterate through all possible bulb numbers from 1 to 100.
+22        for (int i = 1; i <= 100; ++i) {
+23            // If the state is ON ('true'), add the bulb number to our result list.
+24            if (states[i]) {
+25                result.push_back(i);
+26            }
+27        }
+28
+29        // The problem requires the list to be sorted in ascending order.
+30        // Since we iterated from 1 to 100, the 'result' vector is already sorted.
+31        return result;
+32    }
+33};
+34
