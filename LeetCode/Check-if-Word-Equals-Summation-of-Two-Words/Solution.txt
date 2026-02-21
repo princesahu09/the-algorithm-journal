@@ -1,0 +1,16 @@
+1class Solution {
+2public:
+3    int value(string& temp) {
+4       string ans="";
+5       for(auto &i:temp)
+6       {
+7        ans+=(i-'a')+'0';
+8       }
+9        return stoi(ans);
+10    }
+11    bool isSumEqual(string f, string s, string t) {
+12
+13        
+14        return value(f)+value(s)==value(t)?true:false;
+15    }
+16};
