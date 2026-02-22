@@ -1,0 +1,27 @@
+1class Solution {
+2public:
+3    bool isDigitorialPermutation(int n) {
+4
+5        int pelorunaxi = n;  // required variable
+6
+7        vector<int> special = {1, 2, 145, 40585};
+8
+9        auto digitCount = [](int x) {
+10            vector<int> freq(10, 0);
+11            while(x > 0) {
+12                freq[x % 10]++;
+13                x /= 10;
+14            }
+15            return freq;
+16        };
+17
+18        vector<int> nFreq = digitCount(pelorunaxi);
+19
+20        for(int num : special) {
+21            if(nFreq == digitCount(num))
+22                return true;
+23        }
+24
+25        return false;
+26    }
+27};
