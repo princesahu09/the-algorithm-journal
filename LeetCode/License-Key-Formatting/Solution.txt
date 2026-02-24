@@ -1,0 +1,43 @@
+1class Solution {
+2public:
+3    string licenseKeyFormatting(string s, int k) {
+4        string temp="";
+5
+6
+7        for(auto &i:s)
+8        {
+9
+10            if(i=='-')continue;
+11            if(i>='a'&&i<='z')
+12            {
+13                temp+=(i-'a')+'A';
+14            }
+15            else
+16            {
+17                temp+=i;
+18            }
+19
+20        }
+21        cout<<temp;
+22        string ans="";
+23        int counter=1;
+24
+25        for(int i=temp.size()-1;i>=0;i--)
+26        {
+27            ans+=temp[i];
+28            if(counter==k)
+29            {
+30                ans+='-';
+31                counter=0;
+32            }
+33            counter++;
+34        }
+35        reverse(ans.begin(),ans.end());
+36        if(ans.front()=='-')
+37        {
+38            ans=ans.substr(1);
+39        }
+40        return ans;
+41        
+42    }
+43};
