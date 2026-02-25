@@ -1,38 +1,7 @@
-class NumArray {
-public:
+nums = [-2, 0, 3, -5, 2, -1]
+ps = [-2,-2,1,-4,-2,-3] // prefix sum
 
-   vector<int>arr;
-    NumArray(vector<int>& nums) {
-       arr.resize(nums.size());
-
-        if(nums.size()>0)
-        {
-            
-
-            for(int i=0;i<nums.size();i++)
-            {
-                arr[i]=nums[i];
-            }
-
-        }
-
-
-        
-    }
-    
-    int sumRange(int left, int right) {
-        int sum=0;
-        
-        for(int i=left;i<=right;i++)
-        {
-            sum+=arr[i];
-        }
-        return sum;
-    }
-};
-
-/**
- * Your NumArray object will be instantiated and called as such:
- * NumArray* obj = new NumArray(nums);
- * int param_1 = obj->sumRange(left,right);
- */
+[0,2] = ps[2] + (nums[0] - ps[0]) = 1 + (-2 - (-2)) = 1
+[2,5] = ps[5] + (nums[2] - ps[2]) = -3 + (3 - 1) = -1
+[0,5] = ps[5] + (nums[0] - ps[0]) =  -3 + (-2 - (-2)) = -3
+[2,4] = ps[4] + (nums[2] - ps[2]) =  -2 + (3-1) = 0
