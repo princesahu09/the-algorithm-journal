@@ -1,47 +1,41 @@
 1class Solution {
 2public:
-3    void print(vector<int>& rs) {
-4        for (int i = 0; i < rs.size(); i++) {
-5            cout << rs[i] << " ";
-6        }
-7    }
-8    int largestRectangleArea(vector<int>& heights) {
-9
-10        stack<int> s;
-11        const int n = heights.size();
-12        vector<int> rs(n, 0);
-13        vector<int> ls(n, 0);
-14        for (int i = n - 1; i >= 0; i--) {
+3  
+4    int largestRectangleArea(vector<int>& heights) {
+5
+6        stack<int> s;
+7        const int n = heights.size();
+8        vector<int> rs(n, 0);
+9        vector<int> ls(n, 0);
+10        for (int i = n - 1; i >= 0; i--) {
+11
+12            while (!s.empty() && heights[i] <= heights[s.top()]) {
+13                s.pop();
+14            }
 15
-16            while (!s.empty() && heights[i] <= heights[s.top()]) {
-17                s.pop();
-18            }
-19
-20            rs[i] = s.size() == 0 ? n : s.top();
-21            s.push(i);
-22        }
-23        s = stack<int>();
-24        for (int i = 0; i < n; i++) {
-25            while (!s.empty() && heights[i] <= heights[s.top()]) {
-26                s.pop();
-27            }
-28            ls[i] = s.size() == 0 ? -1 : s.top();
-29            s.push(i);
-30        }
+16            rs[i] = s.size() == 0 ? n : s.top();
+17            s.push(i);
+18        }
+19        s = stack<int>();
+20        for (int i = 0; i < n; i++) {
+21            while (!s.empty() && heights[i] <= heights[s.top()]) {
+22                s.pop();
+23            }
+24            ls[i] = s.size() == 0 ? -1 : s.top();
+25            s.push(i);
+26        }
+27
+28     
+29
+30        int ans = 0;
 31
-32        print(rs);
-33        cout << endl;
-34        print(ls);
+32        for (int i = 0; i < n; i++) {
+33            int w = rs[i] - ls[i] - 1;
+34            int h = heights[i];
 35
-36        int ans = 0;
-37
-38        for (int i = 0; i < n; i++) {
-39            int w = rs[i] - ls[i] - 1;
-40            int h = heights[i];
-41
-42            ans = max(ans, w * h);
-43        }
-44
-45        return ans;
-46    }
-47};
+36            ans = max(ans, w * h);
+37        }
+38
+39        return ans;
+40    }
+41};
