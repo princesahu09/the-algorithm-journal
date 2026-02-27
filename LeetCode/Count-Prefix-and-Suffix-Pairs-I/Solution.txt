@@ -1,26 +1,33 @@
 1class Solution {
 2public:
-3    int countPrefixSuffixPairs(vector<string>& words) {
-4        int n = words.size();
-5        int ans = 0;
-6
-7        for (int i = 0; i < n; i++) {
-8            string s1 = words[i];
-9
-10            for (int j = i + 1; j < n; j++) {
-11                string s2 = words[j];
+3
+4bool check(string s1,string s2)
+5{
+6    if(s1.size()>s2.size())return false;
+7    int len=s1.size();
+8   bool prefix= s1.substr(0,len)==s2.substr(0,len);
+9   bool suffix=s1.substr(s1.size()-len)==s2.substr(s2.size()-len);
+10
+11   return prefix&&suffix;
 12
-13                if (s2.length() < s1.length()) 
-14                    continue;
-15
-16                string pre = s2.substr(0, s1.length());
-17                string suf = s2.substr(s2.length() - s1.length());
+13}
+14
+15    int countPrefixSuffixPairs(vector<string>& words) {
+16
+17        int ans=0;
 18
-19                if (pre == s1 && suf == s1) {
-20                    ans++;
-21                }
-22            }
-23        }
-24        return ans;
-25    }
-26};
+19        for(int i=0;i<words.size();i++)
+20        {
+21
+22            for(int j=i+1;j<words.size();j++)
+23            {
+24                if(check(words[i],words[j]))
+25                {
+26                    ans++;
+27                }
+28            }
+29        }
+30        return ans;
+31        
+32    }
+33};
