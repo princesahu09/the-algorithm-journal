@@ -1,0 +1,19 @@
+1class Solution {
+2public:
+3    double calculateTax(vector<vector<int>>& brackets, int income) {  
+4        double ans = 0.0;
+5        int prevUpper = 0;
+6        for(int i = 0; i < brackets.size() && income > 0; i++){
+7            int upper = brackets[i][0];
+8            int percent = brackets[i][1];
+9            
+10            int taxable = min(income, upper - prevUpper);
+11            
+12            ans += taxable * (percent / 100.0);
+13            
+14            income -= taxable;
+15            prevUpper = upper;
+16        }
+17        return ans;
+18    }
+19};
