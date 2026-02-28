@@ -1,0 +1,12 @@
+1class Solution {
+2public:
+3    int concatenatedBinary(int n) {
+4        long long int x=0;
+5        const int MOD = 1e9 + 7;
+6        for(int i=1;i<=n;i++){
+7              int y=(int)(log2(i))+1;
+8              x = ((x * ((1LL << y) % MOD)) % MOD + i) % MOD;
+9        }
+10        return x;
+11    }
+12};
