@@ -12,26 +12,25 @@
 12class Solution {
 13public:
 14
-15int height(TreeNode* root)
-16{
-17    if(root==nullptr)return 0;
-18
-19    return 1+max(height(root->left),height(root->right));
-20}
-21
-22
-23int dia(TreeNode* root)
-24{
-25    if(root==nullptr)return 0;
+15int ans=0;
+16
+17int height(TreeNode* root)
+18{
+19    if(root==nullptr)return 0;
+20    int left=height(root->left);
+21    int right=height(root->right);
+22    ans=max(ans,left+right);
+23
+24    return 1+max(left,right);
+25}
 26
-27    int leftDia=dia(root->left);
-28    int rightDia=dia(root->right);
-29    int curr=height(root->left)+height(root->right);
-30    return max({leftDia,rightDia,curr});
-31}
-32    int diameterOfBinaryTree(TreeNode* root) {
-33
-34        return dia(root);
-35        
-36    }
-37};
+27
+28
+29    int diameterOfBinaryTree(TreeNode* root) {
+30
+31        height(root);
+32
+33        return ans;
+34        
+35    }
+36};
