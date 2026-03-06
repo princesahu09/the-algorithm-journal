@@ -1,0 +1,78 @@
+1// int find(string &w1,string &w2,int i,int j,vector<vector<int>> &dp){
+2//     if(i == w1.size()){
+3//             return (int)w2.size() - j;
+4//         }
+5//         if(j == w2.size()){
+6            
+7//             return (int)w1.size() - i;
+8//         }
+9
+10//         if(dp[i][j]!=-1){
+11//             return dp[i][j];
+12//         }
+13        
+14//         int x=INT_MAX;
+15//         int y=INT_MAX;
+16//         int z=INT_MAX;
+17
+18//         if(w1[i] == w2[j]){
+19//             x=find(w1, w2, i+1, j+1, dp);
+20//         }
+21//         else{
+22//             // Insert
+23//             x=find(w1, w2, i, j+1, dp)+1;
+24            
+25//             // Delete
+26//             y=find(w1, w2, i+1, j, dp)+1;
+27            
+28//             // Replace
+29//             z=find(w1, w2, i+1, j+1,dp)+1;
+30//         }
+31//         return dp[i][j]=min({x,y,z});
+32
+33// }
+34
+35
+36 int find(string &w1,string &w2,vector<vector<int>> &dp){
+37 for(int i=0;i<=w1.size();i++) dp[i][0] = i;
+38        for(int j=0;j<=w2.size();j++) dp[0][j] = j;
+39
+40 for(int i=1;i<=w1.size();i++){
+41    for(int j=1;j<=w2.size();j++){
+42         int x=INT_MAX;
+43        int y=INT_MAX;
+44        int z=INT_MAX;
+45        if(w1[i-1]==w2[j-1]){
+46             x=dp[i-1][j-1];
+47        }
+48        else{
+49            x=dp[i][j-1]+1;
+50            y=dp[i-1][j-1]+1;
+51            z=dp[i-1][j]+1;
+52        }
+53        dp[i][j]=min({x,y,z});
+54    }
+55 }
+56 return dp[w1.size()][w2.size()];
+57
+58
+59 
+60
+61
+62
+63
+64
+65 }
+66
+67
+68
+69class Solution {
+70public:
+71    int minDistance(string word1, string word2) {
+72        // tabulation
+73        vector<vector<int>> dp(word1.size()+1,vector<int> (word2.size()+1,0));
+74
+75        return find(word1,word2,dp);
+76
+77    }
+78};
