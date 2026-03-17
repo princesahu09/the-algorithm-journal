@@ -1,0 +1,12 @@
+1class Solution {
+2public:
+3    int minimumSum(int num) {  
+4        vector<int> d;
+5        while(num){
+6            d.push_back(num%10);
+7            num/=10;
+8        }
+9        sort(d.begin(), d.end());
+10        return (d[0]*10 + d[2]) + (d[1]*10 + d[3]);
+11    }
+12};
