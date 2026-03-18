@@ -1,0 +1,37 @@
+1class Solution {
+2public:
+3    string reorganizeString(string s) {
+4        unordered_map<char,int> freq;
+5        for(char c : s){
+6            freq[c]++;
+7        }
+8        priority_queue<pair<int,char>> pq;
+9        for(auto &it : freq){
+10            pq.push({it.second, it.first});
+11        }
+12        string result = "";
+13        while(pq.size() > 1){
+14            auto first = pq.top(); pq.pop();
+15            auto second = pq.top(); pq.pop();
+16
+17            result += first.second;
+18            result += second.second;
+19
+20            first.first -=1;
+21            second.first -= 1;
+22            
+23            if(first.first > 0)
+24                pq.push(first);
+25            
+26            if(second.first > 0)
+27                pq.push(second);
+28        }
+29        if(!pq.empty()){
+30            auto last = pq.top();
+31
+32            if(last.first > 1) return "";
+33            result += last.second;
+34        }
+35        return result;
+36    }
+37};
