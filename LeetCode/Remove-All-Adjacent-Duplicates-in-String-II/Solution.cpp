@@ -26,16 +26,20 @@
 26                    if (freq != k) {
 27                        st.push({ch, freq});
 28                    }
-29
-30                    i++;
-31                    continue;
-32                }
-33            }
-34            st.push({s[i], 1});
-35
-36            i++;
-37        }
-38
-39        return builder(st);
-40    }
-41};
+29                }
+30                else
+31                {
+32                    st.push({s[i],1});
+33                }
+34            } 
+35            
+36            else {
+37                st.push({s[i], 1});
+38            }
+39
+40            i++;
+41        }
+42
+43        return builder(st);
+44    }
+45};
