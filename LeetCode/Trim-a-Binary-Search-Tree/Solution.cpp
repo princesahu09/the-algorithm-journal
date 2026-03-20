@@ -11,28 +11,35 @@
 11 */
 12class Solution {
 13public:
-14TreeNode* solve(TreeNode*& root,int low,int high)
+14void solve(TreeNode * &root,int low,int high)
 15{
 16    if(root==nullptr)
 17    {
-18        return nullptr;
+18        return;
 19    }
-20    if(root->val<low)
-21    {
-22         return solve(root->right,low,high);
-23    }
-24    if(root->val>high)
-25    {
-26        return solve(root->left,low,high);
-27    }
-28
-29    root->left= solve(root->left,low,high);
-30    root->right= solve(root->right,low,high);
-31    return root;
-32}
-33    TreeNode* trimBST(TreeNode* root, int low, int high) {
-34
-35        return solve(root,low,high);
-36        
-37    }
-38};
+20    solve(root->left,low,high);
+21    solve(root->right,low, high);
+22    if(root->val<low)
+23    {
+24        root->left=nullptr;
+25        root=root->right;
+26        solve(root,low,high);
+27        return;
+28    }
+29    if(root->val>high)
+30    {
+31        root->right=nullptr;
+32        root=root->left;
+33        solve(root,low,high);
+34        return;
+35    }
+36}
+37    TreeNode* trimBST(TreeNode* root, int low, int high) {
+38
+39        solve(root,low,high);
+40        return root;
+41
+42
+43        
+44    }
+45};
