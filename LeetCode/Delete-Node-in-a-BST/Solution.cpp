@@ -64,9 +64,9 @@
 64                return temp;
 65            }
 66
-67            TreeNode* temp = bigger(root->left);
+67            TreeNode* temp = smaller(root->right);
 68            root->val = temp->val;
-69            root->left = solve(root->left, temp->val);
+69            root->right = solve(root->right, temp->val);
 70        }
 71        return root;
 72    }
