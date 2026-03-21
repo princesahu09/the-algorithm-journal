@@ -31,7 +31,7 @@
 31    int solve(unordered_map<int, vector<int>>& adjList, int start) {
 32        int ans = 0;
 33        queue<pair<int, int>> q;
-34        set<int> vis;
+34        unordered_set<int> vis;
 35
 36        q.push({start, ans});
 37
