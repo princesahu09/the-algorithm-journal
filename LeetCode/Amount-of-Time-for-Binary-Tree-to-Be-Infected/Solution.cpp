@@ -56,7 +56,8 @@
 56    int amountOfTime(TreeNode* root, int start) {
 57
 58        unordered_map<int, vector<int>> adjList;
-59        generate(root, adjList);
-60        return solve(adjList, start);
-61    }
-62};
+59        adjList.reserve(100000);
+60        generate(root, adjList);
+61        return solve(adjList, start);
+62    }
+63};
