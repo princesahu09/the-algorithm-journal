@@ -42,14 +42,14 @@
 42
 43            if (!vis.count(value)) {
 44                vis.insert(value);
-45
-46                for (auto& i : adjList[value]) {
-47                    q.push({i, time + 1});
-48                }
-49            } else {
-50                continue;
-51            }
-52                ans = max(ans, time);
+45                ans = max(ans, time);
+46
+47                for (auto& i : adjList[value]) {
+48                    q.push({i, time + 1});
+49                }
+50            } else {
+51                continue;
+52            }
 53        }
 54        return ans;
 55    }
