@@ -1,0 +1,20 @@
+1class Solution:
+2    def uniformArray(self, nums1: list[int]) -> bool:
+3        odd=[]
+4        even=[]
+5        for i in nums1:
+6            if i%2==0:
+7                even.append(i)
+8            else:
+9                odd.append(i)
+10
+11        if len(even)==0 and len(odd)!=0:
+12            return True
+13
+14        elif len(even)!=0 and len(odd)==0:
+15            return True
+16        else:
+17            if min(even)<min(odd):
+18                return False
+19            else:
+20                return True
