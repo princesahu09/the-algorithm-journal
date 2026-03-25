@@ -25,6 +25,7 @@
 25    TreeNode* bstFromPreorder(vector<int>& preorder) {
 26
 27        int i = 0;
-28        return solve(preorder, i, INT_MAX);
-29    }
-30};
+28        int big=*max_element(preorder.begin(),preorder.end());
+29        return solve(preorder, i, big);
+30    }
+31};
