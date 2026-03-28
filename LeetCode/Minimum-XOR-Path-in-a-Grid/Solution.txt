@@ -1,0 +1,16 @@
+1class Solution:
+2    def minCost(self, grid: list[list[int]]) -> int:
+3        m, n = len(grid), len(grid[0])
+4        
+5        dp = [[set() for _ in range(n)] for _ in range(m)]
+6        dp[0][0].add(grid[0][0])
+7        
+8        for i in range(m):
+9            for j in range(n):
+10                for val in dp[i][j]:
+11                    if i + 1 < m:
+12                        dp[i+1][j].add(val ^ grid[i+1][j])
+13                    if j + 1 < n:
+14                        dp[i][j+1].add(val ^ grid[i][j+1])
+15        
+16        return min(dp[m-1][n-1])
