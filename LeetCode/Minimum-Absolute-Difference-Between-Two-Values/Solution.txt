@@ -1,0 +1,21 @@
+1class Solution {
+2public:
+3    int minAbsoluteDifference(vector<int>& nums) {
+4
+5        const int n = nums.size();
+6        int ans = INT_MAX;
+7
+8        for (int i = 0; i < n; i++) {
+9
+10            if (nums[i] == 1) {
+11                for (int j = 0; j < n; j++) {
+12                    if (nums[j] == 2) {
+13                        ans = min(ans, abs(i - j));
+14                    }
+15                }
+16            }
+17        }
+18
+19        return ans==INT_MAX?-1:ans;
+20    }
+21};
