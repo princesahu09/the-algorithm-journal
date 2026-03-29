@@ -1,0 +1,30 @@
+1import heapq
+2
+3class EventManager:
+4
+5    def __init__(self, events: list[list[int]]):
+6        self.heap = []
+7        self.pri = {}
+8
+9        for eventId, priority in events:
+10            self.pri[eventId] = priority
+11            heapq.heappush(self.heap, (-priority, eventId))
+12
+13    def updatePriority(self, eventId: int, newPriority: int) -> None:
+14        if eventId not in self.pri:
+15            return
+16
+17        self.pri[eventId] = newPriority
+18        heapq.heappush(self.heap, (-newPriority, eventId))
+19
+20    def pollHighest(self) -> int:
+21        while self.heap:
+22            priority, eventId = heapq.heappop(self.heap)
+23            priority = -priority
+24
+25            # skip outdated entries
+26            if eventId in self.pri and self.pri[eventId] == priority:
+27                del self.pri[eventId]
+28                return eventId
+29
+30        return -1
