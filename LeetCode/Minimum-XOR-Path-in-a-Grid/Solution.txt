@@ -1,16 +1,29 @@
-1class Solution:
-2    def minCost(self, grid: list[list[int]]) -> int:
-3        m, n = len(grid), len(grid[0])
-4        
-5        dp = [[set() for _ in range(n)] for _ in range(m)]
-6        dp[0][0].add(grid[0][0])
-7        
-8        for i in range(m):
-9            for j in range(n):
-10                for val in dp[i][j]:
-11                    if i + 1 < m:
-12                        dp[i+1][j].add(val ^ grid[i+1][j])
-13                    if j + 1 < n:
-14                        dp[i][j+1].add(val ^ grid[i][j+1])
-15        
-16        return min(dp[m-1][n-1])
+1class Solution {
+2public:
+3    int minCost(vector<vector<int>>& grid) {
+4       int m = grid.size() , n = grid[0].size();
+5        vector<vector<unordered_set<int>>>dp(m,vector<unordered_set<int>>(n));
+6        dp[0][0].insert(grid[0][0]);
+7            for(int i=0;i<m;i++){
+8                for(int j=0;j<n;j++){
+9                    if(i==0 && j==0) continue;
+10
+11                    if(i>0){
+12                        for(auto x: dp[i-1][j]){
+13                            dp[i][j].insert(x^grid[i][j]);
+14                        }
+15                    }
+16                    if(j>0){
+17                        for(auto x: dp[i][j-1]){
+18                            dp[i][j].insert(x^grid[i][j]);
+19                        }
+20                    }
+21                }
+22            }
+23            int ans = INT_MAX;
+24            for(auto x: dp[m-1][n-1]){
+25                ans = min(ans,x);
+26            }
+27            return ans;
+28    }
+29};
