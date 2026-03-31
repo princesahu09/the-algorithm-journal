@@ -1,37 +1,30 @@
 1class SeatManager {
 2public:
-3priority_queue<int,vector<int>,greater<int>>pq;
+3    priority_queue<int, vector<int>, greater<int>> pq;
 4
 5    SeatManager(int n) {
 6
-7        for(int i=1;i<=n;i++)
-8        {
-9            pq.push(i);
-10            
-11        }
-12        
-13    }
-14    
-15    int reserve() {
-16
-17        if(pq.empty()) return -1;
-18        int ans=pq.top();
-19        pq.pop();
-20
+7        for (int i = 1; i <= n; i++) {
+8            pq.push(i);
+9        }
+10    }
+11
+12    int reserve() {
+13
+14        if (pq.empty())
+15            return -1;
+16        int ans = pq.top();
+17        pq.pop();
+18
+19        return ans;
+20    }
 21
-22        return ans;
-23        
-24    }
-25    
-26    void unreserve(int seatNumber) {
-27        pq.push(seatNumber);
-28        
-29    }
-30};
-31
-32/**
-33 * Your SeatManager object will be instantiated and called as such:
-34 * SeatManager* obj = new SeatManager(n);
-35 * int param_1 = obj->reserve();
-36 * obj->unreserve(seatNumber);
-37 */
+22    void unreserve(int seatNumber) { pq.push(seatNumber); }
+23};
+24
+25/**
+26 * Your SeatManager object will be instantiated and called as such:
+27 * SeatManager* obj = new SeatManager(n);
+28 * int param_1 = obj->reserve();
+29 * obj->unreserve(seatNumber);
+30 */
