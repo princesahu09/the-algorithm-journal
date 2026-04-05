@@ -1,0 +1,39 @@
+1class Solution {
+2public:
+3    vector<int> findGoodIntegers(int n) {
+4
+5        unordered_map<int,int>freq;
+6        typedef long long ll;
+7
+8        int limit=cbrt(n);
+9        
+10
+11        for(int a=1;a<=limit;a++)
+12            {
+13                ll a3=1LL*a*a*a;
+14
+15                for(int b=a;b<=limit;b++)
+16                    {
+17                        ll sum=a3+1LL*b*b*b;
+18
+19                        if(sum>n)break;
+20                        freq[sum]++;
+21                    }
+22            }
+23
+24        vector<int>ans;
+25        for(auto &i:freq)
+26            {
+27                if(i.second>=2)
+28                {
+29                    ans.push_back(i.first);
+30                }
+31            }
+32
+33        sort(ans.begin(),ans.end());
+34        return ans;
+35
+36        
+37        
+38    }
+39};
