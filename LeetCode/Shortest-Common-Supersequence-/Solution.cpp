@@ -21,32 +21,36 @@
 21            }
 22        }
 23        string ans = "";
-24        int i = m;
-25        int j = n;
+24        int i=m;
+25        int j=n;
 26
 27        while (i > 0 && j > 0) {
 28            if (str1[i - 1] == str2[j - 1]) {
-29                ans.push_back(str1[i - 1]);
+29                ans.push_back(str1[i-1]);
 30                i--;
 31                j--;
-32            } else if (dp[i - 1][j] > dp[i][j - 1]) {
-33                ans.push_back(str1[i - 1]);
-34                i--;
-35            } else {
-36                ans.push_back(str2[j - 1]);
-37                j--;
-38            }
-39        }
-40        while (i > 0) {
-41            ans.push_back(str1[i - 1]);
-42            i--;
-43        }
-44        while (j > 0) {
-45            ans.push_back(str2[j - 1]);
-46            j--;
-47        }
-48
-49        reverse(ans.begin(), ans.end());
-50        return ans;
-51    }
-52};
+32            } else {
+33
+34                if (dp[i][j - 1] > dp[i-1 ][j]) {
+35                    ans.push_back(str2[j - 1]);
+36                    j--;
+37                } else {
+38                    ans.push_back(str1[i - 1]);
+39                    i--;
+40                }
+41                
+42               
+43            }
+44        }
+45        while (i > 0) {
+46            ans.push_back(str1[i - 1]);
+47            i--;
+48        }
+49        while (j > 0) {
+50            ans.push_back(str2[j - 1]);
+51            j--;
+52        }
+53        reverse(ans.begin(), ans.end());
+54        return ans;
+55    }
+56};
