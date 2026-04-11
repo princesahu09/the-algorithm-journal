@@ -1,0 +1,12 @@
+1class Solution {
+2public:
+3    string trafficSignal(int timer) {
+4
+5        if(timer==0)return "Green";
+6        if(timer==30)return "Orange";
+7        if(timer>30&&timer<=90)return "Red";
+8
+9        return "Invalid";
+10        
+11    }
+12};
