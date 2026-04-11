@@ -1,52 +1,32 @@
-1class Solution {
-2public:
-3    int minOperations(vector<int>& nums) {
-4
-5        int high = *max_element(nums.begin(), nums.end());
-6
-7        const int n = nums.size();
-8
-9        int ans = 0;
-10
-11        vector<bool> sieve(high + 100, true);
-12
-13        sieve[0] = false;
-14        sieve[1] = false;
-15
-16        for (int i = 2; i*i < high + 100; i++) {
-17
-18            if (sieve[i]) {
-19
-20                for (int j = i * i; j < high + 100; j += i) {
-21
-22                    sieve[j] = false;
-23                }
-24            }
-25        }
-26
-27        for (int i = 1; i < n; i += 2) {
-28
-29            int x = nums[i];
-30            if (!sieve[x]) {
-31                continue;
-32            }
-33            if (!sieve[x + 1]) {
-34                ans += 1;
-35            } else {
-36                ans += 2;
-37            }
-38        }
-39
-40        for (int i = 0; i < n; i += 2) {
-41
-42            int x = nums[i];
-43
-44            while (!sieve[x]) {
-45                x++;
-46                ans++;
-47            }
-48        }
-49
-50        return ans;
-51    }
-52};
+1import math
+2class Solution:
+3    def prime(self,n):
+4        if n<2:
+5            return False
+6        for i in range(2,int(math.sqrt(n))+1):
+7            if n%i==0:
+8                return False
+9        return True
+10    def nextprime(self,n):
+11        while True:
+12            if self.prime(n):
+13                return n
+14            n+=1
+15    def notprime(self,n):
+16        while True:
+17            if not self.prime(n):
+18                return n
+19            n+=1
+20        
+21    def minOperations(self, nums: list[int]) -> int:
+22        count=0
+23        for i in range(0,len(nums)):
+24            if i%2==0:
+25                temp = self.nextprime(nums[i])
+26                count+=temp-nums[i]
+27            else:
+28                temp = self.notprime(nums[i])
+29                count+=temp-nums[i]
+30
+31        return count
+32   
