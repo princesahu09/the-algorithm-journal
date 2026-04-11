@@ -1,12 +1,19 @@
-1class Solution:
-2    def countDigitOccurrences(self, nums: list[int], digit: int) -> int:
-3        dig = str(digit)
-4        count=0
-5        temp=""
-6        for i in nums:
-7            temp+=str(i)
-8        for i in temp:
-9            if i==dig:
-10                count+=1
-11        return count
-12        
+1class Solution {
+2public:
+3    int countDigitOccurrences(vector<int>& nums, int digit) {
+4        long long count = 0;
+5        for(int i=0;i<nums.size();i++){
+6            int num = nums[i];
+7            if(num == 0 && digit == 0){
+8                count++;
+9                continue;
+10            }
+11            while(num > 0){
+12                long long rem = num % 10;
+13                if(rem == digit) count++;
+14                 num /= 10;
+15            }
+16        }
+17        return (int)count;
+18    }
+19};
