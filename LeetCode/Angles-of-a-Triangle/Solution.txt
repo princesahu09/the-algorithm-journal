@@ -1,0 +1,38 @@
+1class Solution {
+2public:
+3    double generate(int a,int b,int c)
+4    {
+5        double cosA=(b*b+c*c-a*a)/(2.0*b*c);
+6
+7        cosA=min(1.0,max(-1.0,cosA));
+8
+9        double angle=acos(cosA)*180.0/M_PI;
+10
+11        return angle;
+12    }
+13    vector<double> internalAngles(vector<int>& sides) {
+14        int a=sides[0];
+15        int b=sides[1];
+16        int c=sides[2];
+17        vector<double>ans;
+18
+19        if(a+b>c&&a+c>b&&b+c>a)
+20        {
+21
+22
+23            double f=generate(a,b,c);
+24            double s=generate(b,a,c);
+25            double t=generate(c,b,a);
+26
+27            ans.push_back(f);
+28            ans.push_back(s);
+29            ans.push_back(t);
+30            
+31            sort(ans.begin(),ans.end());
+32            
+33        }
+34
+35        return ans;
+36        
+37    }
+38};
