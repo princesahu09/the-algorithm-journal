@@ -1,0 +1,46 @@
+1class Solution {
+2    int dist(int x1, int x2) {
+3        if (x1 == 0 || x2 == 0) {
+4            return 0;
+5        }
+6        --x1;
+7        --x2;
+8        return abs(x1 / 6 - x2 / 6) + abs(x1 % 6 - x2 % 6);
+9    }
+10    
+11    void better(int &x, int y) {
+12        if (y < 0) {
+13            return;
+14        }
+15        if (x < 0 || x > y) {
+16            x = y;
+17        }
+18    }
+19public:
+20    int minimumDistance(string word) {
+21        int n = word.length();
+22        vector<vector<vector<int>>> dp(n + 1, vector<vector<int>>(27, vector<int>(27, -1)));
+23        dp[0][0][0] = 0;
+24        for (int i = 1; i <= n; ++i) {
+25            int c = word[i - 1] - 'A' + 1;
+26            //printf("c = %d\n", c);
+27            for (int x = 0; x <= 26; ++x) {
+28                for (int y = 0; y <= 26; ++y) {
+29                    if (dp[i - 1][x][y] >= 0) {
+30                        better(dp[i][c][y], dp[i - 1][x][y] + dist(x, c));
+31                        better(dp[i][x][c], dp[i - 1][x][y] + dist(y, c));
+32                    }
+33                }
+34                
+35            }
+36        }
+37        int r = -1;
+38        for (int x = 0; x <= 26; ++x) {
+39            for (int y = 0; y <= 26; ++y) {
+40                better(r, dp[n][x][y]);
+41            }
+42        }
+43        return r;
+44        
+45    }
+46};
