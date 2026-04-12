@@ -1,32 +1,26 @@
 1class Solution {
 2public:
-3
-4    double generate(int a,int b,int c){
-5        double cosA = (b*b+c*c-a*a)/(2.0*b*c);
-6        cosA = min(1.0,max(-1.0,cosA));
-7
-8        double angle = acos(cosA)*180.0/M_PI;
-9
-10        return angle;
-11    }
-12    
-13    vector<double> internalAngles(vector<int>& sides) {
-14        int a = sides[0];
-15        int b = sides[1];
-16        int c = sides[2];
-17        vector<double>ans;
+3    double generate(int a,int b,int c){
+4        double cosA=(b*b+c*c-a*a)/(2.0*b*c);
+5        cosA=min(1.0,max(-1.0,cosA));
+6        double angle=acos(cosA)*180.0/M_PI;
+7        return angle;
+8    }
+9    vector<double> internalAngles(vector<int>& sides) {
+10        int a=sides[0];
+11        int b=sides[1];
+12        int c=sides[2];
+13        vector<double>ans;
+14        if(a+b>c && a+c>b && b+c>a){
+15            double f=generate(a,b,c);
+16            double s=generate(b,a,c);
+17            double t=generate(c,b,a);
 18
-19        if(a+b>c && a+c>b && b+c>a){
-20            double f = generate(a,b,c);
-21            double s = generate(b,a,c);
-22            double t = generate(c,b,a);
-23
-24            ans.push_back(f);
-25            ans.push_back(s);
-26            ans.push_back(t);
-27
-28            sort(ans.begin(),ans.end());
-29        }
-30        return ans;
-31    }
-32};
+19            ans.push_back(f);
+20            ans.push_back(s);
+21            ans.push_back(t);
+22            sort(ans.begin(),ans.end());
+23        }
+24        return ans;
+25    }
+26};
