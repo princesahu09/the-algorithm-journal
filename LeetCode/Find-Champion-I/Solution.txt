@@ -1,0 +1,20 @@
+1class Solution {
+2public:
+3    int findChampion(vector<vector<int>>& grid) {
+4        int n=grid.size();
+5        for(int i=0;i<n;i++){
+6            bool x=true;
+7
+8            for(int j=0;j<n;j++){
+9                if(i!=j && grid[i][j]==0){
+10                     x=false;
+11                    break;
+12                }
+13            }
+14            if(x){
+15                return i;
+16            }
+17        }
+18        return -1;
+19    }
+20};
