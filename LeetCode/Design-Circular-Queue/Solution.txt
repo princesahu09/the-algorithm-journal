@@ -1,0 +1,95 @@
+1struct LinkedList {
+2    LinkedList* next;
+3    int data;
+4
+5    LinkedList(int data) { this->data = data; }
+6};
+7class MyCircularQueue {
+8public:
+9    int limit;
+10    int size;
+11    LinkedList* head;
+12    LinkedList* tail;
+13    MyCircularQueue(int k) {
+14
+15        limit = k;
+16        size = 0;
+17        head = nullptr;
+18        tail = nullptr;
+19    }
+20
+21    bool enQueue(int value) {
+22
+23        if (size < limit) {
+24
+25            LinkedList* node = new LinkedList(value);
+26
+27            if (head == nullptr) {
+28                head = node;
+29                tail = node;
+30
+31                size++;
+32                return true;
+33            }
+34
+35            tail->next = node;
+36            tail = node;
+37            tail->next = head;
+38            size++;
+39            return true;
+40        }
+41
+42        return false;
+43    }
+44
+45    bool deQueue() {
+46
+47        if (head == nullptr)
+48            return false;
+49
+50        if (size == 1) {
+51            head = nullptr;
+52            tail = nullptr;
+53            size--;
+54            return true;
+55        }
+56
+57        head = head->next;
+58        tail->next = head;
+59        size--;
+60        return true;
+61    }
+62
+63    int Front() {
+64
+65        if (head == nullptr) {
+66            return -1;
+67        }
+68
+69        return head->data;
+70    }
+71
+72    int Rear() {
+73
+74        if (tail == nullptr) {
+75            return -1;
+76        }
+77
+78        return tail->data;
+79    }
+80
+81    bool isEmpty() { return size == 0; }
+82
+83    bool isFull() { return size == limit; }
+84};
+85
+86/**
+87 * Your MyCircularQueue object will be instantiated and called as such:
+88 * MyCircularQueue* obj = new MyCircularQueue(k);
+89 * bool param_1 = obj->enQueue(value);
+90 * bool param_2 = obj->deQueue();
+91 * int param_3 = obj->Front();
+92 * int param_4 = obj->Rear();
+93 * bool param_5 = obj->isEmpty();
+94 * bool param_6 = obj->isFull();
+95 */
