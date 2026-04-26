@@ -7,51 +7,37 @@
 7        for (int i = 0; i < times.size(); i++) {
 8            int u = times[i][0];
 9            int v = times[i][1];
-10            int w = times[i][2];
+10            int t = times[i][2];
 11
-12            adjList[u].push_back({v, w});
+12            adjList[u].push_back({v, t});
 13        }
 14
 15        vector<int> dist(n + 1, INT_MAX);
 16        dist[k] = 0;
 17
-18        priority_queue<pair<int, int>, vector<pair<int, int>>,
-19                       greater<pair<int, int>>>
-20            pq;
-21
-22        pq.push({0, k});
-23
-24        while (pq.size() > 0) {
-25            int u = pq.top().second;
-26            pq.pop();
-27
-28            for (auto& i : adjList[u]) {
-29
-30                int v = i.first;
-31                int t = i.second;
-32                if (dist[v] > dist[u] + t) {
-33                    dist[v] = dist[u] + t;
-34                    pq.push({dist[v], v});
-35                }
-36            }
-37        }
-38
-39        int ans = 0;
+18        for (int i = 1; i <= n - 1; i++) {
+19            for (int u = 1; u <= n; u++) {
+20
+21                for (auto& e : adjList[u]) {
+22                    if (dist[u] != INT_MAX &&
+23                        dist[e.first] > dist[u] + e.second) {
+24                        dist[e.first] = dist[u] + e.second;
+25                    }
+26                }
+27            }
+28        }
+29        int ans = 0;
+30
+31        for (int i = 1; i <= n; i++) {
+32            if (i == k) {
+33                continue;
+34            }
+35            if (dist[i] == INT_MAX) {
+36                return -1;
+37            }
+38            ans = max(ans, dist[i]);
+39        }
 40
-41        for (int i = 1; i <= n; i++) {
-42
-43            if (i == k)
-44
-45            {
-46                continue;
-47            }
-48
-49            if (dist[i] == INT_MAX) {
-50                return -1;
-51            }
-52            ans = max(ans, dist[i]);
-53        }
-54
-55        return ans;
-56    }
-57};
+41        return ans;
+42    }
+43};
