@@ -33,19 +33,19 @@
 33
 34        unordered_set<int> s(nums.begin(), nums.end());
 35
-36        ListNode* temp = head;
+36       
 37        int ans = 0;
 38
-39        while (temp) {
-40            if (s.count(temp->val)) {
+39        while (head) {
+40            if (s.count(head->val)) {
 41                ans++;
-42                while (temp && s.count(temp->val)) {
-43                    temp = temp->next;
+42                while (head && s.count(head->val)) {
+43                    head = head->next;
 44                }
 45            }
 46
 47            else {
-48                temp = temp->next;
+48                head = head->next;
 49            }
 50        }
 51
