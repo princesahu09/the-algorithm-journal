@@ -10,40 +10,45 @@
 10 */
 11class Solution {
 12public:
-13    bool search(vector<int>& nums, int target) {
-14        int start = 0;
-15        int end = nums.size() - 1;
-16        while (start <= end) {
-17            int mid = start + (end - start) / 2;
+13    // bool search(vector<int>& nums, int target) {
+14    //     int start = 0;
+15    //     int end = nums.size() - 1;
+16    //     while (start <= end) {
+17    //         int mid = start + (end - start) / 2;
 18
-19            if (nums[mid] == target) {
-20                return true;
-21            }
+19    //         if (nums[mid] == target) {
+20    //             return true;
+21    //         }
 22
-23            else if (nums[mid] > target) {
-24                end = mid - 1;
-25            } else {
-26                start = mid + 1;
-27            }
-28        }
+23    //         else if (nums[mid] > target) {
+24    //             end = mid - 1;
+25    //         } else {
+26    //             start = mid + 1;
+27    //         }
+28    //     }
 29
-30        return false;
-31    }
+30    //     return false;
+31    // }
 32    int numComponents(ListNode* head, vector<int>& nums) {
 33
-34        sort(nums.begin(), nums.end());
+34        unordered_set<int> s(nums.begin(), nums.end());
 35
 36        ListNode* temp = head;
 37        int ans = 0;
 38
 39        while (temp) {
-40            if (search(nums, temp->val) &&
-41                (temp->next == nullptr || !search(nums, temp->next->val))) {
-42                ans++;
-43            }
-44            temp = temp->next;
-45        }
+40            if (s.count(temp->val)) {
+41                ans++;
+42                while (temp && s.count(temp->val)) {
+43                    temp = temp->next;
+44                }
+45            }
 46
-47        return ans;
-48    }
-49};
+47            else {
+48                temp = temp->next;
+49            }
+50        }
+51
+52        return ans;
+53    }
+54};
