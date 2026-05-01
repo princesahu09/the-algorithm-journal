@@ -4,8 +4,8 @@
 4
 5        int n = grid.size();
 6
-7        for (int i = 0; i < n; i++) {
-8            unordered_set<int> s;
+7        unordered_set<int> s;
+8        for (int i = 0; i < n; i++) {
 9
 10            for (int j = 0; j < n; j++) {
 11
@@ -18,38 +18,43 @@
 18                }
 19            }
 20
-21            if (s.size() != n)
+21            if (s.size() != n) {
 22                return false;
-23        }
-24
-25        return true;
-26    }
-27    bool checkCol(vector<vector<int>>& grid) {
-28
-29        int n = grid.size();
-30
-31        for (int i = 0; i < n; i++) {
-32            unordered_set<int> s;
-33
-34            for (int j = 0; j < n; j++) {
-35
-36                if (s.count(grid[j][i])) {
-37                    return false;
-38                } else {
-39                    s.insert(grid[j][i]);
-40                }
-41            }
-42
-43            if (s.size() != n) {
-44
-45                return false;
-46            }
-47        }
-48
-49        return true;
-50    }
-51    bool checkValid(vector<vector<int>>& matrix) {
-52
-53        return checkRow(matrix) && checkCol(matrix);
-54    }
-55};
+23            } else {
+24                s.clear();
+25            }
+26        }
+27
+28        return true;
+29    }
+30    bool checkCol(vector<vector<int>>& grid) {
+31
+32        int n = grid.size();
+33        unordered_set<int> s;
+34
+35        for (int i = 0; i < n; i++) {
+36
+37            for (int j = 0; j < n; j++) {
+38
+39                if (s.count(grid[j][i])) {
+40                    return false;
+41                } else {
+42                    s.insert(grid[j][i]);
+43                }
+44            }
+45
+46            if (s.size() != n) {
+47
+48                return false;
+49            } else {
+50                s.clear();
+51            }
+52        }
+53
+54        return true;
+55    }
+56    bool checkValid(vector<vector<int>>& matrix) {
+57
+58        return checkRow(matrix) && checkCol(matrix);
+59    }
+60};
