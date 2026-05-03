@@ -1,0 +1,84 @@
+1class Solution {
+2public:
+3    int reverse(int n) {
+4        int ans = 0;
+5
+6        while (n > 0) {
+7
+8            ans = (ans * 10) + (n % 10);
+9            n /= 10;
+10        }
+11
+12        return ans;
+13    }
+14
+15    vector<int> simpleSieve(int limit) {
+16
+17        vector<int> sieve(limit + 1, true);
+18
+19        sieve[0] = sieve[1] = false;
+20
+21            for (int i = 2; i * i <= limit; i++) {
+22
+23            if (sieve[i]) {
+24
+25                for (int j = i * i; j <= limit; j += i) {
+26                    sieve[j] = false;
+27                }
+28            }
+29        }
+30
+31        vector<int> prime;
+32        for (int i = 0; i <= limit; i++) {
+33            if (sieve[i]) {
+34                prime.push_back(i);
+35            }
+36        }
+37
+38        return prime;
+39    }
+40
+41    int segmentedSieve(int start, int end) {
+42
+43        int limit = sqrt(end);
+44
+45        vector<int> prime = simpleSieve(limit);
+46
+47        vector<bool> isPrime(end - start + 1, true);
+48
+49        for (int p : prime) {
+50           int mul = max(p * p, ((start + p - 1) / p) * p);
+51            for (int j = mul; j <= end; j += p) {
+52                isPrime[j - start] = false;
+53            }
+54        }
+55
+56        if(start==0)
+57        {
+58            if(end>=0)isPrime[0]=false;
+59            if(end>=1)isPrime[1]=false;
+60        }
+61
+62        if (start == 1)
+63            isPrime[0] = false;
+64
+65        int sum = 0;
+66        for (int i = 0; i <isPrime.size(); i++) {
+67            if (isPrime[i]) {
+68                sum += (start+i);
+69            }
+70        }
+71
+72        return sum;
+73    }
+74    int sumOfPrimesInRange(int n) {
+75        int r = reverse(n);
+76
+77        int start = min(n, r);
+78        int end = max(n, r);
+79
+80
+81
+82        return segmentedSieve(start,end);
+83    }
+84};
