@@ -1,0 +1,37 @@
+1class Solution {
+2public:
+3    vector<int> rearrangeBarcodes(vector<int>& b) {
+4        unordered_map<int,int>freq;
+5        for(int i=0;i<b.size();i++){
+6            freq[b[i]]++;
+7        }
+8        vector<int>ans(b.size());
+9        int maxfreq = 0;
+10        int maxvalue = 0;
+11        for(auto it:freq){
+12            if(it.second > maxfreq){
+13                maxfreq = it.second;
+14                maxvalue = it.first;
+15            }
+16        }
+17        int i=0;
+18        while(freq[maxvalue] > 0){
+19            ans[i] = maxvalue;
+20            i += 2;
+21            freq[maxvalue]--;
+22        }
+23        for (auto &it : freq) {
+24            int val = it.first;
+25            int count = it.second;
+26
+27            while (count > 0) {
+28                if (i >= b.size()) i = 1;
+29
+30                ans[i] = val;
+31                i += 2;
+32                count--;
+33            }
+34        }
+35        return ans;
+36    }
+37};
