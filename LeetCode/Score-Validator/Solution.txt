@@ -1,0 +1,26 @@
+1class Solution {
+2public:
+3    vector<int> scoreValidator(vector<string>& events) {
+4
+5        int score = 0;
+6        int counter = 0;
+7
+8        for (auto& i : events) {
+9            if (counter == 10) {
+10                break;
+11            }
+12            if (i == "W") {
+13                counter++;
+14            } else if (i == "WD") {
+15                score++;
+16            } else if (i == "NB") {
+17                score++;
+18
+19            } else {
+20                score += stoi(i);
+21            }
+22        }
+23
+24        return {score, counter};
+25    }
+26};
