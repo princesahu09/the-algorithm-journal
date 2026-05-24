@@ -1,0 +1,28 @@
+1class Solution {
+2public:
+3
+4   
+5
+6    
+7    vector<int> limitOccurrences(vector<int>& nums, int k) {
+8
+9        unordered_map<int,int>freq;
+10        vector<int>ans;
+11
+12        for(auto &i:nums)
+13            {
+14               if(freq[i]<k)
+15               {
+16                   ans.push_back(i);
+17                   freq[i]++;
+18               }
+19            }
+20
+21
+22       
+23
+24
+25        return ans;
+26        
+27    }
+28};
