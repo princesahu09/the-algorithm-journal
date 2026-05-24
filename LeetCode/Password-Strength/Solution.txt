@@ -1,0 +1,51 @@
+1class Solution {
+2public:
+3    int solve(vector<bool> arr, int score) {
+4        int ans = 0;
+5
+6        for (int i = 0; i < arr.size(); i++) {
+7            if (arr[i]) {
+8                ans += score;
+9            }
+10        }
+11        return ans;
+12    }
+13    int passwordStrength(string password) {
+14
+15        vector<bool> lower(26, false);
+16        vector<bool> upper(26, false);
+17        vector<bool> number(10, false);
+18        vector<bool> sp(4, false);
+19
+20        for (auto& i : password) {
+21            if (i >= 'a' && i <= 'z') {
+22                lower[i - 'a'] = true;
+23            } else if (i >= 'A' && i <= 'Z') {
+24                upper[i - 'A'] = true;
+25            } else if (i >= '0' && i <= '9') {
+26                number[i - '0'] = true;
+27            } else {
+28                if (i == '!') {
+29                    sp[0] = true;
+30                }
+31                if (i == '@') {
+32                    sp[1] = true;
+33                }
+34                if (i == '#') {
+35                    sp[2] = true;
+36                }
+37                if (i == '$') {
+38                    sp[3] = true;
+39                }
+40            }
+41        }
+42
+43        int ans=0;
+44        ans+=solve(lower,1);
+45        ans+=solve(upper,2);
+46        ans+=solve(number,3);
+47        ans+=solve(sp,5);
+48        
+49        return ans;
+50    }
+51};
