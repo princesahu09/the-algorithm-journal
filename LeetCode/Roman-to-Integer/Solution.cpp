@@ -30,12 +30,12 @@
 30            int forward = i + 1;
 31           // sum=sum+roman(s.at(i));
 32
-33            if (forward < s.size()) {
+33            if (forward <s.size()) {
 34                
 35                if (roman(s.at(i)) < roman(s.at(forward)))
 36                    sum = sum - roman(s.at(i));
-37                 else if (roman(s.at(i)) == roman(s.at(forward)))
-38                    sum = sum + roman(s.at(i));
+37                //  else if (roman(s.at(i)) == roman(s.at(forward)))
+38                //     sum = sum + roman(s.at(i));
 39                    else
 40                    {
 41                        sum += roman(s.at(i));
