@@ -1,0 +1,18 @@
+1class Solution {
+2public:
+3    int sumOfGoodIntegers(int n, int k) {
+4
+5        int sum = 0;
+6
+7
+8        for(int i=max(1,n-k);i<=n+k;i++)
+9        {
+10            if((n&i)==0)
+11            {
+12                sum+=i;
+13            }
+14        }
+15
+16        return sum;
+17    }
+18};
