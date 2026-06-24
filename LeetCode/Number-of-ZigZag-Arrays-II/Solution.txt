@@ -1,0 +1,45 @@
+1class Solution:
+2    MOD = 1_000_000_007
+3
+4    def mul(self, a, b):
+5        n = len(a)
+6        m = len(b[0])
+7        res = [[0] * m for _ in range(n)]
+8
+9        for i in range(n):
+10            for k in range(len(a[0])):
+11                r = a[i][k]
+12                if r == 0:
+13                    continue
+14                for j in range(m):
+15                    res[i][j] = (res[i][j] + r * b[k][j]) % self.MOD
+16        return res
+17
+18    def powMul(self, base, exp, res):
+19        while exp > 0:
+20            if exp & 1:
+21                res = self.mul(res, base)
+22            base = self.mul(base, base)
+23            exp >>= 1
+24        return res
+25
+26    def zigZagArrays(self, n: int, l: int, r: int) -> int:
+27        m = r - l + 1
+28        if n == 1:
+29            return m
+30
+31        size = 2 * m
+32        u = [[0] * size for _ in range(size)]
+33        for i in range(m):
+34            for j in range(i):
+35                u[i][j + m] = 1
+36            for j in range(i + 1, m):
+37                u[i + m][j] = 1
+38
+39        dp = [[1] * size]
+40        dp = self.powMul(u, n - 1, dp)
+41        ans = 0
+42        for i in range(size):
+43            ans = (ans + dp[0][i]) % self.MOD
+44
+45        return ans
