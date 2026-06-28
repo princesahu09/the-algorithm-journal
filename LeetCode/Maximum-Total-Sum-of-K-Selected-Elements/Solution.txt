@@ -1,0 +1,30 @@
+1class Solution {
+2public:
+3    long long maxSum(vector<int>& nums, int k, int mul) {
+4
+5        sort(nums.begin(),nums.end());
+6
+7        long long ans=0;
+8
+9        int n=nums.size();
+10
+11
+12        for(int i=n-1;i>=n-k;i--)
+13            {
+14                ans+=(1LL*nums[i]);
+15            }
+16        int idx=nums.size()-1;
+17
+18        while(k>0&&mul>1)
+19            {
+20
+21                ans+=(1LL*nums[idx]*(mul-1));
+22                idx--;
+23                mul--;
+24                k--;
+25                
+26            }
+27        return ans;
+28        
+29    }
+30};
