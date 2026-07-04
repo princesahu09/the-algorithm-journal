@@ -1,0 +1,21 @@
+1class Solution {
+2public:
+3    bool isMiddleElementUnique(vector<int>& nums) {
+4
+5        int n=nums.size()-1;
+6        int a=nums[n/2];
+7        int counter=0;
+8
+9        for(int i=0;i<nums.size();i++)
+10            {
+11                if(nums[i]==a)
+12                {
+13                    counter++;
+14                }
+15            }
+16
+17
+18        return counter==1;
+19        
+20    }
+21};
