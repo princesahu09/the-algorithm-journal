@@ -2,25 +2,30 @@
 2public:
 3    int removeCoveredIntervals(vector<vector<int>>& intervals) {
 4
-5        sort(intervals.begin(), intervals.end(), [](auto& a, auto& b) {
-6            if (a[0] == b[0]) {
-7                return a[1] > b[1];
-8            }
-9            return a[0] < b[0];
-10        });
+5        int ans = 0;
+6
+7        for (int i = 0; i < intervals.size(); i++) {
+8
+9            int c = intervals[i][0];
+10            int d = intervals[i][1];
 11
-12        int maxEnd = intervals[0][1];
-13
-14        int ans = 1;
-15
-16        for (int i = 1; i < intervals.size(); i++) {
+12            bool flag = false;
+13            for (int j = 0; j < intervals.size(); j++) {
+14
+15                int a = intervals[j][0];
+16                int b = intervals[j][1];
 17
-18            if (intervals[i][1] > maxEnd) {
-19                ans++;
-20                maxEnd = max(maxEnd, intervals[i][1]);
-21            }
-22        }
+18                if (i != j && a <= c && b >= d) {
+19                    flag = true;
+20                    break;
+21                }
+22            }
 23
-24        return ans;
-25    }
-26};
+24            if (!flag) {
+25                ans++;
+26            }
+27        }
+28
+29        return ans;
+30    }
+31};
