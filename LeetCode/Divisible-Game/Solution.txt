@@ -1,0 +1,58 @@
+1class Solution {
+2public:
+3    int divisibleGame(vector<int>& nums) {
+4
+5        const long long MOD = 1e9 + 7;
+6
+7        unordered_set<int> st;
+8
+9        for (int x : nums) {
+10            for (int d = 1; 1LL * d * d <= x; d++) {
+11                if (x % d == 0) {
+12                    if (d > 1)
+13                        st.insert(d);
+14                    if (x / d > 1)
+15                        st.insert(x / d);
+16                }
+17            }
+18        }
+19
+20        st.insert(*max_element(nums.begin(), nums.end()) + 1);
+21
+22        long long bestDiff = LLONG_MIN;
+23
+24        int bestK = INT_MIN;
+25
+26        for (int k : st) {
+27
+28            long long cur = LLONG_MIN;
+29
+30            long long sum = 0;
+31
+32            for (int x : nums) {
+33                long long val = (x % k == 0 ? x : -x);
+34
+35                if (sum < 0) {
+36                    sum = val;
+37                } else {
+38                    sum += val;
+39                }
+40
+41                cur = max(cur, sum);
+42            }
+43
+44            if (cur > bestDiff || (cur == bestDiff && k < bestK)) {
+45                bestDiff = cur;
+46                bestK = k;
+47            }
+48        }
+49
+50        long long ans=(bestDiff%MOD)*(1LL*bestK%MOD);
+51
+52        ans%=MOD;
+53
+54        if(ans<0)ans+=MOD;
+55
+56        return (int)ans;
+57    }
+58};
