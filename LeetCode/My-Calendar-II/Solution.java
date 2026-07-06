@@ -22,18 +22,27 @@
 22                counts.put(startTime, counts.get(startTime) - 1);
 23                counts.put(endTime, counts.get(endTime) + 1);
 24
-25                return false;
-26            }
-27
-28        }
-29
-30        return true;
-31
-32    }
-33}
-34
-35/**
-36 * Your MyCalendarTwo object will be instantiated and called as such:
-37 * MyCalendarTwo obj = new MyCalendarTwo();
-38 * boolean param_1 = obj.book(startTime,endTime);
-39 */
+25                if(counts.get(startTime)==0)
+26                {
+27                    counts.remove(startTime);
+28                }
+29                if(counts.get(endTime)==0)
+30                {
+31                    counts.remove(endTime);
+32                }
+33
+34                return false;
+35            }
+36
+37        }
+38
+39        return true;
+40
+41    }
+42}
+43
+44/**
+45 * Your MyCalendarTwo object will be instantiated and called as such:
+46 * MyCalendarTwo obj = new MyCalendarTwo();
+47 * boolean param_1 = obj.book(startTime,endTime);
+48 */
