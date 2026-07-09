@@ -1,0 +1,72 @@
+1const int MOD=1e9+7;
+2
+3int find(int i,int j,vector<vector<int>>& grid, vector<vector<int>> &dp){
+4
+5    if (dp[i][j] != -1){
+6    return dp[i][j];
+7    }
+8    
+9
+10    int x=grid[i][j];
+11
+12
+13
+14    long long ans=0;
+15
+16    if(i>0 && grid[i-1][j]>x){
+17ans+=find(i-1,j,grid,dp)+1;
+18    }
+19    if(j>0 && grid[i][j-1]>x){
+20ans+=find(i,j-1,grid,dp)+1;
+21    }
+22    if(i<grid.size()-1 && grid[i+1][j]>x){
+23ans+=find(i+1,j,grid,dp)+1;
+24    }
+25    if(j<grid[i].size()-1 && grid[i][j+1]>x){
+26ans+=find(i,j+1,grid,dp)+1;
+27    }
+28
+29    return dp[i][j]=ans%MOD;
+30
+31    
+32}
+33
+34
+35class Solution {
+36public:
+37    int countPaths(vector<vector<int>>& grid) {
+38        // vector<vector<bool>> visit(grid.size(),vector<int> (grid[0].size(),false));
+39        vector<vector<int>> dp(grid.size(),vector<int> (grid[0].size(),-1));
+40
+41
+42        
+43
+44        long long count=0;
+45        for(int i=0;i<grid.size();i++){
+46           
+47
+48            for(int j=0;j<grid[0].size();j++){
+49            if(dp[i][j]!=-1){
+50                
+51                count += dp[i][j];
+52            }
+53            else{
+54            int p=find(i,j,grid,dp);
+55           
+56            count+=p;
+57           
+58            
+59            }
+60        }
+61        }
+62        int n=grid.size();
+63        int m=grid[0].size();
+64
+65        int l=m*n;
+66
+67        count=(count+l);
+68        count=count%MOD;
+69
+70        return count;
+71    }
+72};
