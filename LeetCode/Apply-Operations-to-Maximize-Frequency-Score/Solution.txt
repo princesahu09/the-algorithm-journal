@@ -1,0 +1,57 @@
+1void centerfunc(int &center,int &i,int &j,long long &cright,long long &cleft,vector<int> &nums){
+2    cout<<j<<endl;
+3    int gap=j-i;
+4            gap=gap/2;
+5            gap=gap+i;
+6
+7            // cout<<"gap-"<<gap<<endl;
+8            while(center < j &&  center<gap){
+9               
+10                if(center<j && center<(int)nums.size()-1){
+11    cright -= abs(nums[center+1]-nums[center]) * (long long)(j-center);
+12}
+13if(center<j && center<(int)nums.size()-1){
+14    cleft  += abs(nums[center+1]-nums[center]) * (long long)(center-i+1);
+15}
+16                center++;
+17            }
+18          
+19}
+20
+21
+22class Solution {
+23public:
+24    int maxFrequencyScore(vector<int>& nums, long long k) {
+25       sort(nums.begin(),nums.end());
+26       int center=0;
+27       int i=0;
+28       int j=0;
+29       long long cleft=0;
+30       long long cright=0;
+31       int ans=0;
+32
+33       while(j<nums.size()){
+34            cright+=abs(nums[center]-nums[j]);
+35
+36            
+37
+38            centerfunc(center,i,j,cright,cleft,nums);
+39            // cout<<j<<"===="<<cleft+cright<<endl;
+40
+41            if(cleft+cright>k){
+42              
+43               while(i < j && cleft+cright>k){
+44                  cleft-=abs(nums[center]-nums[i]);
+45                  i++;
+46                  centerfunc(center,i,j,cright,cleft,nums);
+47               }
+48               
+49
+50            }
+51             ans=max(j-i+1,ans);
+52             j++;
+53       }
+54
+55       return ans;
+56    }
+57};
