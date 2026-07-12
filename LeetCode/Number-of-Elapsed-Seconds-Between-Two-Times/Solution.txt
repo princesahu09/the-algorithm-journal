@@ -1,0 +1,17 @@
+1class Solution {
+2    public int secondsBetweenTimes(String startTime, String endTime) {
+3
+4        int hour1 = (int) (startTime.charAt(0) - '0') * 10 + (int) (startTime.charAt(1) - '0');
+5        int hour2 = (int) (endTime.charAt(0) - '0') * 10 + (int) (endTime.charAt(1) - '0');
+6        int min1 = (int) (startTime.charAt(3) - '0') * 10 + (int) (startTime.charAt(4) - '0');
+7        int min2 = (int) (endTime.charAt(3) - '0') * 10 + (int) (endTime.charAt(4) - '0');
+8        int sec1 = (int) (startTime.charAt(6) - '0') * 10 + (int) (startTime.charAt(7) - '0');
+9        int sec2 = (int) (endTime.charAt(6) - '0') * 10 + (int) (endTime.charAt(7) - '0');
+10
+11
+12        int ans=(hour2-hour1)*3600+(min2-min1)*60+(sec2-sec1);
+13
+14        return ans;
+15
+16    }
+17}
