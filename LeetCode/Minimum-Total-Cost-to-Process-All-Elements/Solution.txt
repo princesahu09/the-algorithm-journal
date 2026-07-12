@@ -1,0 +1,39 @@
+1class Solution {
+2    public int minimumCost(int[] nums, int k) {
+3
+4        long MOD = 1000000007L;
+5
+6        long cur = k;
+7        long op = 0;
+8        long cost = 0;
+9
+10        for (int i : nums) {
+11            if (cur < i) {
+12                long need = i - cur;
+13
+14                long t = (need + k - 1L) / k;
+15                long a=t;
+16                long b=2L*op+t+1;
+17
+18                if((a&1)==0)
+19                {
+20                    a/=2;
+21                }
+22                else
+23                {
+24                        b/=2;
+25                }
+26
+27                long add = ((a%MOD)*(b%MOD))%MOD;
+28                cost = (cost + add) % MOD;
+29                op += t;
+30                cur += t * k;
+31            }
+32
+33            cur -= i;
+34        }
+35
+36        return (int) (cost % MOD);
+37
+38    }
+39}
