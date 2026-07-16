@@ -16,7 +16,7 @@ Return the minimum cost of a path for the frog.
 
 Example 1:
 
-[https://assets.leetcode.com/uploads/2022/11/14/example-1.png]
+[https://assets.leetcode.com/uploads/2026/02/23/2498_ex0.png]
 
 
 Input: stones = [0,2,5,6,7]
@@ -28,7 +28,7 @@ Since it is not possible to achieve a cost of less than 5, we return it.
 
 Example 2:
 
-[https://assets.leetcode.com/uploads/2022/11/14/example-2.png]
+[https://assets.leetcode.com/uploads/2026/02/23/2498_ex1.png]
 
 
 Input: stones = [0,3,9]
