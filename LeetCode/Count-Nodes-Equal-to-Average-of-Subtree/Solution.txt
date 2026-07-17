@@ -1,0 +1,57 @@
+1/**
+2 * Definition for a binary tree node.
+3 * struct TreeNode {
+4 *     int val;
+5 *     TreeNode *left;
+6 *     TreeNode *right;
+7 *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+8 *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+9 *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+10 * };
+11 */
+12
+13 pair<int,int> find(TreeNode* root,int &ans){
+14    if(root==nullptr){
+15        return {0,0};
+16
+17    }
+18
+19    int x=0;
+20    int y=0;
+21
+22    auto a=find(root->left,ans);
+23
+24    y+=a.second;
+25
+26    x+=a.first;
+27
+28    auto b=find(root->right,ans);
+29
+30    y+=b.second;
+31
+32    x+=b.first;
+33
+34    x+=1;
+35    y+=root->val;
+36
+37    if((y/x)==root->val){
+38        ans++;
+39    }
+40
+41    return {x,y};
+42
+43
+44
+45 }
+46
+47
+48
+49class Solution {
+50public:
+51    int averageOfSubtree(TreeNode* root) {
+52        int ans=0;
+53
+54        auto x=find(root,ans);
+55        return ans;
+56    }
+57};
