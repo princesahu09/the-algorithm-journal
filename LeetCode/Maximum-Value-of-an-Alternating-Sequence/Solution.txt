@@ -1,0 +1,23 @@
+1class Solution {
+2public:
+3    long long maximumValue(int n, int s, int m) {
+4
+5
+6     typedef long long ll;
+7
+8        ll gain=m-1LL;
+9
+10        ll evenPeak=1LL*s+(1LL*(n-1)/2)*gain;
+11
+12        ll oddPeak=s;
+13        ll oddPeaks=n/2;
+14
+15
+16        if(oddPeaks>0)
+17        {
+18            oddPeak=1LL*s+1LL*m+(oddPeaks-1)*gain;
+19        }
+20
+21        return max(evenPeak,oddPeak);
+22    }
+23};
