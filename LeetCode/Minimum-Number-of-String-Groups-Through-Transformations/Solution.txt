@@ -1,0 +1,82 @@
+1class Solution {
+2
+3    String solve(String s) {
+4        if (s.length() <= 1)
+5
+6        {
+7            return s;
+8        }
+9
+10        int start = calculate(s);
+11
+12        return s.substring(start) + s.substring(0, start);
+13    }
+14
+15    int calculate(String s) {
+16        String ss = s + s;
+17
+18        int n = s.length();
+19
+20        int i = 0;
+21        int j = 1;
+22
+23        int k = 0;
+24
+25        while (i < n && j < n && k < n) {
+26            char a = ss.charAt(i + k);
+27            char b = ss.charAt(j + k);
+28
+29            if (a == b) {
+30                k++;
+31                continue;
+32            }
+33
+34            if (a > b) {
+35                i = i + k + 1;
+36
+37                if (i <= j) {
+38                    i = j + 1;
+39                }
+40            }
+41
+42            else {
+43
+44                j = j + k + 1;
+45
+46                if (j <= i) {
+47                    j = i + 1;
+48                }
+49            }
+50
+51            k = 0;
+52        }
+53
+54        return Math.min(i, j);
+55    }
+56
+57    public int minimumGroups(String[] words) {
+58
+59        HashSet<String> set = new HashSet<>();
+60
+61        for (String word : words) {
+62
+63            StringBuilder even = new StringBuilder();
+64            StringBuilder odd = new StringBuilder();
+65
+66            for (int i = 0; i < word.length(); i++) {
+67                if ((i & 1) == 0) {
+68                    even.append(word.charAt(i));
+69                } else {
+70                    odd.append(word.charAt(i));
+71                }
+72            }
+73
+74            String evenCan = solve(even.toString());
+75            String oddCan = solve(odd.toString());
+76
+77            set.add(evenCan + "#" + oddCan);
+78        }
+79        return set.size();
+80
+81    }
+82}
