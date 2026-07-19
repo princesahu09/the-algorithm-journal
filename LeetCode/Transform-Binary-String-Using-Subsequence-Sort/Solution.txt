@@ -1,0 +1,80 @@
+1class Solution {
+2    public boolean[] transformStr(String s, String[] strs) {
+3
+4        int n = s.length();
+5
+6        int totalOnes = 0;
+7
+8        int[] prefix = new int[n];
+9
+10        for (int i = 0; i < n; i++) {
+11            if (s.charAt(i) == '1') {
+12                totalOnes++;
+13            }
+14
+15            prefix[i] = totalOnes;
+16        }
+17
+18        boolean[] ans = new boolean[strs.length];
+19
+20        for (int idx = 0; idx < strs.length; idx++) {
+21
+22            char[] arr = strs[idx].toCharArray();
+23
+24            int fixedOnes = 0;
+25            int questions = 0;
+26
+27            for (char c : arr) {
+28
+29                if (c == '1') {
+30                    fixedOnes++;
+31                }
+32
+33                else if (c == '?') {
+34                    questions++;
+35                }
+36            }
+37
+38            int need = totalOnes - fixedOnes;
+39
+40            if (need < 0 || need > questions) {
+41                ans[idx] = false;
+42                continue;
+43            }
+44
+45            for (int i = n - 1; i >= 0; i--) {
+46
+47                if (arr[i] == '?') {
+48                    if (need > 0) {
+49                        arr[i] = '1';
+50                        need--;
+51                    } else {
+52                        arr[i] = '0';
+53                    }
+54                }
+55            }
+56
+57            int ones = 0;
+58
+59            boolean ok = true;
+60
+61            for (int i = 0; i < n; i++) {
+62
+63                if (arr[i] == '1') {
+64                    ones++;
+65                }
+66
+67                if (ones > prefix[i]) {
+68
+69                    ok = false;
+70                    break;
+71                }
+72            }
+73
+74            ans[idx] = ok;
+75        }
+76
+77        return ans;
+78
+79    }
+80}
