@@ -1,0 +1,45 @@
+1/**
+2 * Definition for a binary tree node.
+3 * public class TreeNode {
+4 *     int val;
+5 *     TreeNode left;
+6 *     TreeNode right;
+7 *     TreeNode() {}
+8 *     TreeNode(int val) { this.val = val; }
+9 *     TreeNode(int val, TreeNode left, TreeNode right) {
+10 *         this.val = val;
+11 *         this.left = left;
+12 *         this.right = right;
+13 *     }
+14 * }
+15 */
+16class Solution {
+17
+18    int count = 0;
+19
+20    int solve(TreeNode root) {
+21
+22        if (root == null) {
+23            return Integer.MIN_VALUE;
+24        }
+25
+26        int left = solve(root.left);
+27        int right = solve(root.right);
+28
+29        int s = Math.max(root.val, Math.max(left, right));
+30
+31        if (root.val == s) {
+32            count++;
+33        }
+34
+35        return s;
+36
+37    }
+38
+39    public int countDominantNodes(TreeNode root) {
+40
+41        solve(root);
+42        return count;
+43
+44    }
+45}
