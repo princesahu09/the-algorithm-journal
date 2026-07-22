@@ -1,0 +1,22 @@
+1class Solution {
+2    public String kthLargestNumber(String[] nums, int k) {
+3
+4        PriorityQueue<String> pq = new PriorityQueue<>((a, b) -> {
+5
+6            if (a.length() != b.length()) {
+7                return a.length() - b.length();
+8            }
+9            return a.compareTo(b);
+10        });
+11
+12        for (String s : nums) {
+13            pq.offer(s);
+14
+15            if (pq.size() > k) {
+16                pq.poll();
+17            }
+18        }
+19        return pq.peek();
+20
+21    }
+22}
