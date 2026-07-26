@@ -1,0 +1,11 @@
+1# Write your MySQL query statement below
+2with temp as(
+3   select user_id,ROUND(
+4        SUM(CASE WHEN action = 'confirmed' THEN 1 ELSE 0 END) / COUNT(*),
+5        2
+6    ) as confirmation_rate from Confirmations Group by user_id
+7)
+8select a.user_id,Coalesce(b.confirmation_rate,0) as confirmation_rate from Signups a Left JOIN
+9temp b on a.user_id=b.user_id;
+10
+11
