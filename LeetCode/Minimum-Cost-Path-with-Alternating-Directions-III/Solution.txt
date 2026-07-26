@@ -1,0 +1,108 @@
+1class Solution {
+2
+3    class State {
+4
+5        int r, c, p;
+6        long cost;
+7
+8        State(int r, int c, int p, long cost) {
+9            this.r = r;
+10            this.c = c;
+11            this.p = p;
+12            this.cost = cost;
+13        }
+14    }
+15
+16    public long minCost(int m, int n, int[][] penalty) {
+17
+18
+19        long INF=Long.MAX_VALUE/4;
+20
+21        long[][][] dist= new long[m][n][2];
+22
+23        for(int i=0;i<m;i++)
+24            {
+25
+26                for(int j=0;j<n;j++)
+27                    {
+28
+29                        Arrays.fill(dist[i][j],INF);
+30                    }
+31            }
+32
+33        PriorityQueue<State>pq=new PriorityQueue<>((a,b)->Long.compare(a.cost,b.cost));
+34
+35        long start=1L;
+36
+37        dist[0][0][0]=start;
+38
+39        pq.offer(new State(0,0,0,start));
+40
+41        int[] dr={-1,1,0,0};
+42        int[] dc={0,0,-1,1};
+43
+44        while(!pq.isEmpty())
+45            {
+46
+47                State cur=pq.poll();
+48
+49                if(cur.cost>dist[cur.r][cur.c][cur.p])
+50                {
+51                    continue;
+52                }
+53                if(cur.r==m-1&&cur.c==n-1)
+54                {
+55                    return cur.cost;
+56                }
+57                long ncost=cur.cost+penalty[cur.r][cur.c];
+58
+59
+60                if(ncost<dist[cur.r][cur.c][cur.p^1])
+61                {
+62                    dist[cur.r][cur.c][cur.p^1]=ncost;
+63
+64                    pq.offer(new State(cur.r,cur.c,cur.p^1,ncost));
+65                }
+66
+67                for(int d=0;d<4;d++)
+68                    {
+69                        int nr=cur.r+dr[d];
+70                        int nc=cur.c+dc[d];
+71
+72                        if(nr<0||nr>=m||nc<0||nc>=n)
+73                        {
+74                            continue;
+75                        }
+76
+77                        long add=1L*(nr+1)*(nc+1);
+78
+79                        boolean valid;
+80
+81                        if(cur.p==0)
+82                        {
+83                            valid=(d==1||d==3);
+84                        }
+85                        else
+86                        {
+87                            valid=(d==0||d==2);
+88                        }
+89
+90                        if(!valid)
+91                        {
+92                            add+=penalty[cur.r][cur.c];
+93                            
+94                        }
+95                        long nd=cur.cost+add;
+96
+97                        if(nd<dist[nr][nc][cur.p^1])
+98                        {
+99                            dist[nr][nc][cur.p^1]=nd;
+100
+101                            pq.offer(new State(nr,nc,cur.p^1,nd));
+102                        }
+103                    }
+104            }
+105        return -1;
+106        
+107    }
+108}
