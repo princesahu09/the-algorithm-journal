@@ -20,104 +20,71 @@
 20
 21    public boolean circularArrayLoop(int[] nums) {
 22
-23        boolean[] visited=new boolean[nums.length];
-24
-25        Arrays.fill(visited,true);
-26
-27        for (int i = 0; i < nums.length; i++) {
-28            if(nums[i]==0)
-29            {
-30                continue;
-31            }
-32
-33            Set<Integer> st = new HashSet<>();
-34
-35            st.add(i);
-36            boolean isPos = nums[i] > 0;
+23        for (int i = 0; i < nums.length; i++) {
+24            if (nums[i] == 0) {
+25                continue;
+26            }
+27
+28            boolean isPos = nums[i] > 0;
+29
+30            int curr = i;
+31            int slow = i;
+32            int fast = i;
+33
+34            do {
+35                slow = calNextIdx(nums, slow);
+36                fast = calNextIdx(nums, fast);
 37
-38            int curr = i;
-39
-40            while (true) {
-41                int next = calNextIdx(nums, curr);
-42                
-43               
-44
-45                if (isPos) {
-46
-47                    if (nums[next] < 0) {
-48                        break;
-49                    } else {
-50
-51                        if (st.contains(next)) {
-52
-53                            if (curr != next) {
-54                                return true;
-55                            } else {
-56                                break;
-57                            }
-58
-59                        }
-60
-61                        st.add(next);
+38                if (isPos) {
+39                    if (nums[fast] < 0) {
+40                        break;
+41                    }
+42                } else {
+43                    if (nums[fast] > 0) {
+44                        break;
+45                    }
+46                }
+47                fast = calNextIdx(nums, fast);
+48                if (isPos) {
+49                    if (nums[fast] < 0) {
+50                        break;
+51                    }
+52                } else {
+53                    if (nums[fast] > 0) {
+54                        break;
+55                    }
+56                }
+57
+58                if (slow == fast) {
+59
+60                    if (slow != calNextIdx(nums, slow)) {
+61                        return true;
 62
-63                    }
-64
-65                }
-66
-67                else {
-68
-69                    if (nums[next] > 0) {
-70                        break;
-71                    } else {
-72
-73                        if (st.contains(next)) {
-74
-75                            if (curr != next) {
-76                                return true;
-77                            } else {
-78                                break;
-79                            }
-80
-81                        }
+63                    } else {
+64                        break;
+65                    }
+66                }
+67
+68            } while (slow != fast);
+69
+70            if (isPos) {
+71                while (nums[curr] > 0) {
+72                    int next = calNextIdx(nums, curr);
+73                    nums[curr] = 0;
+74                    curr = next;
+75                }
+76            } else {
+77                while (nums[curr] < 0) {
+78                    int next = calNextIdx(nums, curr);
+79                    nums[curr] = 0;
+80                    curr = next;
+81                }
 82
-83                        st.add(next);
+83            }
 84
-85                    }
+85        }
 86
-87                }
+87        return false;
 88
-89              
-90
-91                curr = next;
-92
-93
-94            }
-95
-96            curr=i;
-97
-98            if(isPos)
-99            {
-100                while(nums[curr]>0)
-101                {
-102                        int next=calNextIdx(nums,curr);
-103                        nums[curr]=0;
-104                        curr=next;
-105                }
-106            }
-107            else
-108            {
-109                while(nums[curr]<0)
-110                {
-111                        int next=calNextIdx(nums,curr);
-112                        nums[curr]=0;
-113                        curr=next;
-114                }
-115
-116            }
-117
-118        }
-119
-120        return false;
-121
-122    }
-123}
+89    }
+90}
