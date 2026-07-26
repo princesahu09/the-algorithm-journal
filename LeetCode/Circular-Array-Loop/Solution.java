@@ -25,93 +25,97 @@
 25        Arrays.fill(visited,true);
 26
 27        for (int i = 0; i < nums.length; i++) {
-28
-29            Set<Integer> st = new HashSet<>();
-30
-31            st.add(i);
-32            boolean isPos = nums[i] > 0;
-33
-34            int curr = i;
-35
-36            while (true) {
-37                int next = calNextIdx(nums, curr);
-38                
-39               
-40
-41                if (isPos) {
-42
-43                    if (nums[next] < 0) {
-44                        break;
-45                    } else {
+28            if(nums[i]==0)
+29            {
+30                continue;
+31            }
+32
+33            Set<Integer> st = new HashSet<>();
+34
+35            st.add(i);
+36            boolean isPos = nums[i] > 0;
+37
+38            int curr = i;
+39
+40            while (true) {
+41                int next = calNextIdx(nums, curr);
+42                
+43               
+44
+45                if (isPos) {
 46
-47                        if (st.contains(next)) {
-48
-49                            if (curr != next) {
-50                                return true;
-51                            } else {
-52                                break;
-53                            }
-54
-55                        }
-56
-57                        st.add(next);
+47                    if (nums[next] < 0) {
+48                        break;
+49                    } else {
+50
+51                        if (st.contains(next)) {
+52
+53                            if (curr != next) {
+54                                return true;
+55                            } else {
+56                                break;
+57                            }
 58
-59                    }
+59                        }
 60
-61                }
+61                        st.add(next);
 62
-63                else {
+63                    }
 64
-65                    if (nums[next] > 0) {
-66                        break;
-67                    } else {
+65                }
+66
+67                else {
 68
-69                        if (st.contains(next)) {
-70
-71                            if (curr != next) {
-72                                return true;
-73                            } else {
-74                                break;
-75                            }
-76
-77                        }
-78
-79                        st.add(next);
+69                    if (nums[next] > 0) {
+70                        break;
+71                    } else {
+72
+73                        if (st.contains(next)) {
+74
+75                            if (curr != next) {
+76                                return true;
+77                            } else {
+78                                break;
+79                            }
 80
-81                    }
+81                        }
 82
-83                }
+83                        st.add(next);
 84
-85              
+85                    }
 86
-87                curr = next;
+87                }
 88
-89
-90            }
-91
-92            curr=i;
+89              
+90
+91                curr = next;
+92
 93
-94            if(isPos)
-95            {
-96                while(nums[curr]>0)
-97                {
-98                        int next=calNextIdx(nums,curr);
-99                        nums[curr]=0;
-100                }
-101            }
-102            else
-103            {
-104                while(nums[curr]<0)
-105                {
-106                        int next=calNextIdx(nums,curr);
-107                        nums[curr]=0;
-108                }
-109
-110            }
-111
-112        }
+94            }
+95
+96            curr=i;
+97
+98            if(isPos)
+99            {
+100                while(nums[curr]>0)
+101                {
+102                        int next=calNextIdx(nums,curr);
+103                        nums[curr]=0;
+104                }
+105            }
+106            else
+107            {
+108                while(nums[curr]<0)
+109                {
+110                        int next=calNextIdx(nums,curr);
+111                        nums[curr]=0;
+112                }
 113
-114        return false;
+114            }
 115
-116    }
-117}
+116        }
+117
+118        return false;
+119
+120    }
+121}
