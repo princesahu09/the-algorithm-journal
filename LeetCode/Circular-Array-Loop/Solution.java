@@ -101,21 +101,23 @@
 101                {
 102                        int next=calNextIdx(nums,curr);
 103                        nums[curr]=0;
-104                }
-105            }
-106            else
-107            {
-108                while(nums[curr]<0)
-109                {
-110                        int next=calNextIdx(nums,curr);
-111                        nums[curr]=0;
-112                }
-113
-114            }
+104                        curr=next;
+105                }
+106            }
+107            else
+108            {
+109                while(nums[curr]<0)
+110                {
+111                        int next=calNextIdx(nums,curr);
+112                        nums[curr]=0;
+113                        curr=next;
+114                }
 115
-116        }
+116            }
 117
-118        return false;
+118        }
 119
-120    }
-121}
+120        return false;
+121
+122    }
+123}
