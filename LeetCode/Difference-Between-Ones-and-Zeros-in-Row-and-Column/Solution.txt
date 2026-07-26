@@ -1,0 +1,42 @@
+1class Solution {
+2public:
+3    vector<vector<int>> onesMinusZeros(vector<vector<int>>& grid) {
+4        vector<int> a(grid.size()); 
+5        vector<int> b(grid[0].size());
+6
+7
+8        for(int i=0;i<grid.size();i++){
+9              int count=0;
+10        for(int j=0;j<grid[i].size();j++){
+11             if(grid[i][j]==1){
+12                count++;
+13             }
+14        }
+15        a[i]=count;
+16        }
+17        for(int j=0;j<grid[0].size();j++){
+18              int count=0;
+19        for(int i=0;i<grid.size();i++){
+20             if(grid[i][j]==1){
+21                count++;
+22             }
+23        }
+24        b[j]=count;
+25        }
+26
+27        for(int i=0;i<grid.size();i++){
+28        for(int j=0;j<grid[i].size();j++){
+29
+30            int ones=a[i]+b[j];
+31            int zero=grid.size()+grid[0].size()-ones;
+32
+33            grid[i][j]=(ones-zero);
+34             
+35        }
+36        }
+37        return grid;
+38
+39
+40
+41    }
+42};
