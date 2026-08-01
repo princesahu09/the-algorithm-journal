@@ -1,0 +1,5 @@
+1# Write your MySQL query statement below
+2
+3
+4select transaction_date,coalesce(sum(case when amount%2=1 then amount END),0) as odd_sum,coalesce(sum(case when amount%2=0 then amount END),0) as even_sum from transactions group by transaction_date order by 
+5transaction_date asc; 
