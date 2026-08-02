@@ -9,22 +9,24 @@
 9
 10    public long maxPairStrength(int[] nums) {
 11
-12        long ans = Long.MIN_VALUE;
+12        Arrays.sort(nums);
 13
-14        for (int i = 0; i < nums.length; i++) {
-15            for (int j = i + 1; j < nums.length; j++) {
-16
-17                int g = gcd(nums[i], nums[j]);
+14        long ans = Long.MIN_VALUE;
+15
+16        for (int i = 0; i < nums.length; i++) {
+17            for (int j = i + 1; j < nums.length; j++) {
 18
-19                long x = nums[i] / g;
-20                long y = nums[j] / g;
-21
-22                ans = Math.max(ans, x * y);
+19                int g = gcd(nums[i], nums[j]);
+20
+21                long x = nums[i] / g;
+22                long y = nums[j] / g;
 23
-24            }
-25        }
-26
-27        return ans;
+24                ans = Math.max(ans, x * y);
+25
+26            }
+27        }
 28
-29    }
-30}
+29        return ans;
+30
+31    }
+32}
