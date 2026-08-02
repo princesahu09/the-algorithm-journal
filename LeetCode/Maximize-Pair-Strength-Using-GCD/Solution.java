@@ -12,22 +12,19 @@
 12        long ans = Long.MIN_VALUE;
 13
 14        for (int i = 0; i < nums.length; i++) {
-15            for (int j = i+1; j < nums.length; j++) {
-16               
-17                    long temp = gcd(nums[i], nums[j]);
-18                    temp = temp * temp;
-19
-20                    long s=(long)nums[i]*nums[j];
+15            for (int j = i + 1; j < nums.length; j++) {
+16
+17                int g = gcd(nums[i], nums[j]);
+18
+19                long x = nums[i] / g;
+20                long y = nums[j] / g;
 21
-22                    ans = Math.max(ans, s / temp);
+22                ans = Math.max(ans, x * y);
 23
-24                    
-25                
+24            }
+25        }
 26
-27            }
-28        }
-29
-30        return ans;
-31
-32    }
-33}
+27        return ans;
+28
+29    }
+30}
