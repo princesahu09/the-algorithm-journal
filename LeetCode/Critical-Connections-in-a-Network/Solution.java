@@ -23,7 +23,7 @@
 23            }
 24
 25            else if (v != parU) {
-26                low[node] = Math.min(low[node], low[v]);
+26                low[node] = Math.min(low[node], dt[v]);
 27            }
 28        }
 29    }
