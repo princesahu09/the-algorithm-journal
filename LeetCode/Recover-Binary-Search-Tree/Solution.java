@@ -34,14 +34,14 @@
 34
 35    }
 36
-37    void print(List<Integer> arr) {
-38        // Collections.sort(arr,(a,b)->b.value-a.value);
-39        for (Integer i : arr) {
-40            // System.out.print( "("+ i.value+","+i.index+")");
-41            System.out.print(i + " ");
-42        }
-43        System.out.println();
-44    }
+37    // void print(List<Integer> arr) {
+38    //     // Collections.sort(arr,(a,b)->b.value-a.value);
+39    //     for (Integer i : arr) {
+40    //         // System.out.print( "("+ i.value+","+i.index+")");
+41    //         System.out.print(i + " ");
+42    //     }
+43    //     System.out.println();
+44    // }
 45
 46    int index = 0;
 47
@@ -58,7 +58,7 @@
 58
 59        List<Integer> arr = new ArrayList<>();
 60        generate(root, 0, arr);
-61        print(arr);
+61       // print(arr);
 62        Collections.sort(arr);
 63
 64        fill(root, arr);
