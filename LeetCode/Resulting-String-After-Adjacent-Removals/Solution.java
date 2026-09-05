@@ -1,0 +1,8 @@
+"hkg"
+"aaa"
+"aza"
+"azaza"
+"abazavzyz"
+"zzaa"
+"hgfedcba"
+"abcba"
