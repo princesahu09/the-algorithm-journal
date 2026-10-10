@@ -1,0 +1,33 @@
+1class Solution {
+2
+3    public int[] maxProductPair(int[] nums, int target) {
+4
+5        int a = -1;
+6        int b = -1;
+7        int high = Integer.MIN_VALUE;
+8
+9        for (int i = 0; i < nums.length; i++) {
+10
+11            for (int j = 0; j < nums.length; j++) {
+12                if (i != j) {
+13                    if (nums[i] + nums[j] == target && nums[i] > nums[j]) {
+14                        if (nums[i] * nums[j] >high) {
+15                            a = i;
+16                            b = j;
+17                            high = nums[i] * nums[j];
+18                        }
+19                    }
+20
+21                }
+22            }
+23        }
+24
+25        int[] ans = new int[2];
+26
+27        ans[0] = a;
+28        ans[1] = b;
+29
+30        return ans;
+31
+32    }
+33}
